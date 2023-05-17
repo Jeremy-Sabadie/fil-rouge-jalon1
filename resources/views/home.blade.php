@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
+<body id="home">
     <header>
         <nav>
             <ul>
@@ -55,7 +55,7 @@
     </aside>
     <main>
         <h4>Bienvenu sur votre profil: user #0000</h4>
-        <img src="../images/logo_amio.png" alt="logo">
+        <img src="/images/logo_amio.png" alt="logo">
         <u>
         </u>
 
