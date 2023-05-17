@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="fr">
+@extends('templates.signtemplate')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sign up</title>
-    @vite(['resources/css/app.css'])
-</head>
-<header>
-    <nav></nav>
-</header>
+@section('title')
+    Sign up
+@endsection
 
-<body>
+@section('content')
     <img src="../images/logo_amio.png" alt="logo">
     <form action="" method="post">
         <label for="mail">email</label>
@@ -32,6 +24,4 @@
         <a href="../02_sign_in_pages/signin.html">sign in</a>
     </span>
     <a href="">Mot de passe oublié</a>
-</body>
-
-</html>
+@endsection
