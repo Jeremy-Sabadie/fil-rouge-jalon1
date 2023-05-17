@@ -27,9 +27,10 @@
                 </li>
                 <li><a href="#">Accueil</a></li>
                 <li>
-                    <form action="" method="post">
+                    <form action="" method="get">
                         <label for="search">search bar</label>
                         <input type="text" id="search" name="search" placeholder="search">
+                        <button type="submit">rechercher</button>
                     </form>
                 </li>
                 <li><a href="#">À propos</a></li>

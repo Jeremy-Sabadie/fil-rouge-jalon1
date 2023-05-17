@@ -33,7 +33,7 @@
     </span>
     <a href="">mot de passe oublié</a>
     <!-- a effacer: -->
-    <a href="../03_home_page/index.html">visiter</a>
+    <a href="{{route('home')}}">visiter</a>
 </body>
 
 </html>

@@ -12,18 +12,32 @@ body#signin{
     background-color: black;
     color: wheat;
 }
-
-form {
-    width: 15%;
-    height: 20%;
-    margin-top: 1%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+body#home {
+    width: 100%;
+    background-color: black;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "aside main"
+        "footer footer";
+    min-height: 100vh;
+}
+#home form{
+    width: 100%;
 
 }
+
+#home nav li form label {
+    background-color: none;
+    width: 100%;
+
+    color: #333;
+}
+
+
+
 
 label {
     margin-right: auto;
@@ -32,12 +46,16 @@ label {
     font-size: small;
 }
 
-button {
+#home nav li form button {
     width: 100%;
-    height: 3em;
+    height: 30px;
+
     background-color: cornflowerblue;
-    margin-top: 15%;
+    margin-top: 10%;
     border-radius: 2em;
+}
+#home aside{
+    background-color: red;
 }
 
 button:hover {
@@ -201,13 +219,11 @@ nav li form {
     flex-direction: column;
 }
 
-nav li form label {
-    color: #333;
-}
+
 
 /*End of the nav style.*/
 /*Start of the aside style.*/
-aside {
+#home aside {
     grid-area: aside;
 
     background-color: beige;
@@ -215,11 +231,11 @@ aside {
     padding-top: 10%;
 }
 
-aside h2 {
+#home aside h2 {
     margin-bottom: 10%;
 }
 
-aside ul {
+#home aside ul {
     height: 100%;
     display: flex;
 
@@ -232,7 +248,7 @@ aside ul {
 
 }
 
-aside ul li {
+#home aside ul li {
     width: 100%;
     height: 30%;
     display: flex;
@@ -241,7 +257,7 @@ aside ul li {
     border: #333 solid 1px;
 }
 
-aside ul li button {
+#home aside ul li button {
     font-size: small;
     width: fit-content;
     height: 30px;
@@ -274,7 +290,7 @@ main img {
 }
 
 /*footer style:*/
-footer {
+#home footer {
     grid-area: footer;
     background-color: #72a1f9;
     color: white;
@@ -310,7 +326,7 @@ footer ul li a:visited {
         object-fit: cover;
     }
 
-    aside ul li {
+    #home aside ul li {
         width: 100%;
         height: fit-content;
         border: darkgrey solid 2px;
@@ -377,6 +393,11 @@ footer ul li a:visited {
 
     nav ul img {
         scale: 0.6;
+    }
+    nav form button{
+        width: 50%;
+        background-color: #8c8585;
+        color: white;
     }
 
     /*end of the responsive style to the navbar.*/
