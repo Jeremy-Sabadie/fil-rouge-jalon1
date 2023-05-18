@@ -20,7 +20,7 @@
 <span>
     <p>Create an account</p>
 
-    <a href="../01_sign_up_pages/signup.html">sign up</a>
+    <a href="{{ route('signup') }}">sign up</a>
 </span>
 <a href="">mot de passe oublié</a>
 <!-- a effacer: -->

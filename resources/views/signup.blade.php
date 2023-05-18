@@ -21,7 +21,7 @@
     <span>
         <p>Already have an account: </p>
 
-        <a href="../02_sign_in_pages/signin.html">sign in</a>
+        <a href="{{ route('signin') }}">sign in</a>
     </span>
     <a href="">Mot de passe oublié</a>
 @endsection
