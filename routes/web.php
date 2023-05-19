@@ -32,15 +32,15 @@ Route::get('/all', function () {
 })->name('all');
 //route vers la page de dréation de ticket.
 Route::get('/new', function () {
-    return view('new');
+    return view('new_ticket');
 })->name('new');
 //route vers la page de dréation de ticket.
-Route::get('{/detail', function () {
+Route::get('/detail', function () {
     return view('detail');
 })->name('detail');
 //route vers la page de recherche de ticket par filtre.
 Route::get('/search', function () {
-    return view('search');
+    return view('view_test');
 })->name('search');
 
 

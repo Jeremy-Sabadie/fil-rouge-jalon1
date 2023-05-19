@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <title>     cceuil</title>
-    @vite(['resources/css/app.scss'])
+@include('components.head')
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -27,10 +24,9 @@
                 </li>
                 <li><a href="#">Accueil</a></li>
                 <li>
-                    <form action="" method="get">
+                    <form action="" method="post">
                         <label for="search">search bar</label>
                         <input type="text" id="search" name="search" placeholder="search">
-                        <button type="submit">rechercher</button>
                     </form>
                 </li>
                 <li><a href="#">À propos</a></li>
@@ -54,7 +50,9 @@
 
         </ul>
     </aside>
-    @yield('content')
+    <main>
+        @yield('content')
+    </main>
     <footer>
         <ul>
             <h4>contact</h4>
