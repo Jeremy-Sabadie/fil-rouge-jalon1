@@ -431,16 +431,19 @@ table tr th {
 /*Start of the table style:*/
 
 /*start of the form style: */
+h4{
+margin-top: 0;
+margin-bottom: 7%;
+}
 main form {
     width: 150px;
     height: 100px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
