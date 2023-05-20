@@ -40,7 +40,7 @@ Route::get('/detail', function () {
 })->name('detail');
 //route vers la page de recherche de ticket par filtre.
 Route::get('/search', function () {
-    return view('view_test');
+    return view('search');
 })->name('search');
 
 
