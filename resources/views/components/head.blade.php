@@ -5,4 +5,5 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="signin.css">
     @vite(['resources/css/app.scss'])
+    @vite(['resources/js/app.js'])
 </head>
