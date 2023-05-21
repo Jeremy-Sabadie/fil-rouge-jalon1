@@ -42,6 +42,12 @@ Route::get('/detail', function () {
 Route::get('/search', function () {
     return view('search');
 })->name('search');
+Route::get('/closed', function () {
+    return view('close');
+})->name('close');
+Route::get('/waiting', function () {
+    return view('waiting');
+})->name('waiting');
 
 
 
