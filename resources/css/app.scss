@@ -273,6 +273,13 @@ body#home {
         display: flex;
         justify-content: space-between;
     }
+        @media only screen and (max-width: 640px) {
+            footer {
+                    grid-area: footer;
+                    max-height: 20%;
+                    border-right-color: #72a1f9;
+                    color: white;
+        }
 
     footer ul {
         height: 100%;
@@ -299,6 +306,7 @@ body#home {
             height: 20px;
             object-fit: cover;
         }
+        
 
         aside ul li {
             width: 100%;
@@ -470,3 +478,51 @@ main form select {
 }
 
 /*end of the form style.*/
+
+
+/*start of the all tickets table style:*/
+table {
+    width: 180px;
+    height: 90px;
+
+    background-color: antiquewhite;
+
+}
+
+table{
+    width: 40%;
+    height: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+table tr{
+    width: 100%;
+    height: auto;
+
+}
+
+table th,td {
+    width: calc(100%/3);
+    height: calc(100%/3);
+
+    margin: 0;
+    font-size: small;
+    text-transform: capitalize;
+}
+
+table tr td {
+    width: calc(100%/3);
+    height:calc(100%/3);
+    margin: 0;
+
+}
+@media only screen and (max-width: 640px) {
+table {
+        font-size: smaller;
+        width: 90px;
+        height: 150px;
+    }
+
+}
+
+/*start of the all tickets table style:*/
