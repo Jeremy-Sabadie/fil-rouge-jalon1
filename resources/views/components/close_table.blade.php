@@ -7,8 +7,8 @@
                 </tr>
             </tbody>
                 <tr>
-                    <th>date de création</th>
-                    <td> @yield('ticket.date')</td>
+                    <th>numéro de ticket</th>
+                    <td> @yield('ticket.id')</td>
                 </tr>
                 <tr>
                     <th>type de panne</th>
@@ -23,8 +23,8 @@
                     <td> @yield('ticket.repairer')</td>
                 </tr>
                 <tr>
-                    <th>numéro de ticket</th>
-                    <td> @yield('ticket.id')</td>
+                    <th>date dd'ouverture</th>
+                    <td> @yield('ticket.date')</td>
                 </tr>
 
         </table>

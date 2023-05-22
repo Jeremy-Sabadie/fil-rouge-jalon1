@@ -1,5 +1,5 @@
 <form action="" method="post">
-
+@csrf
     <label for="name">nom du ticket</label>
     <input type="text" name="ticket_name" id="name">
 
