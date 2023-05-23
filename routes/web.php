@@ -26,7 +26,7 @@ Route::get('/home', [ticketsController::class, 'home'])->name('home');
 Route::get('/all', [ticketsController::class, 'all'])->name('all');
 //route vers la page de dréation de ticket.
 Route::get('/detail', [ticketsController::class, 'detail'])->name('detail');
-//route vers la page des tickets fermés.
+//route vers la page des tickets fermés
 Route::get('/', function () {
     return view('close');
 })->name('close');
