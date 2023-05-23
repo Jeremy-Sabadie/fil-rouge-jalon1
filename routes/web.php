@@ -13,32 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\ticketsController;
+
 //route vers la page de conection
-Route::get('/signin', function () {
-    return view('signin');
-})->name('signin');
+Route::get('/signin', [ticketsController::class, 'signin'])->name('signin');
 //route vers la page de conection
 
 //route vers la page de création de compte.
-Route::get('/signup', function () {
-    return view('signup');
-})->name('signup');
+Route::get('/signup', [ticketsController::class, 'signup'])->name('signup');
 //route vers la page d'acceuil utilisateur.
 Route::get('/home', [ticketsController::class, 'home'])->name('home');
 //route vers la page de tous les tickets.
-Route::get('/all', function () {
-    return view('all');
-})->name('all');
+Route::get('/all', [ticketsController::class, 'all'])->name('all');
 //route vers la page de dréation de ticket.
-Route::get('/new', function () {
-    return view('new_ticket');
-})->name('new');
-//route vers la page de détail du ticket.
-Route::get('/detail', function () {
-    return view('detail');
-})->name('detail');
+Route::get('/detail', [ticketsController::class, 'detail'])->name('detail');
 //route vers la page des tickets fermés.
-Route::get('/close', function () {
+Route::get('/', function () {
     return view('close');
 })->name('close');
 //route vers la page des tickets en attente.
@@ -55,13 +44,12 @@ Route::get('/closed', function () {
 Route::get('/waiting', function () {
     return view('waiting');
 })->name('waiting');
-
 // liaison avec le controleurs:
 
 
-Route::get('/', [ticketsController::class, 'home']);
-Route::get('/', [ticketsController::class, 'all']);
-Route::get('/', [ticketsController::class, 'new_ticket']);
+
+
+
 Route::get('/', [ticketsController::class, 'detail']);
 Route::get('/', [ticketsController::class, 'close']);
 Route::get('/', [ticketsController::class, 'waiting']);

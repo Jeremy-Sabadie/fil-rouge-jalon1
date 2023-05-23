@@ -6,7 +6,7 @@
 
 @section('content')
     <img src="../images/logo_amio.png" alt="logo">
-    <form action="" method="post">
+    <form action="{'home'}}" method="post">
         @csrf
         <label for="mail">email</label>
         <input type="email" id="mail" placeholder="email" require>
