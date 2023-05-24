@@ -2,8 +2,8 @@
 <table>
             <tbody>
                 <tr>
-                    <th>libellé:</th>
-                    <td>info</td>
+                    <th>numéro:</th>
+                    <td>nom</td>
                 </tr>
             </tbody>
                 <tr>

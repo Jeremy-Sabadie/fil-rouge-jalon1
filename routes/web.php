@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AvionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,7 +47,11 @@ Route::get('/waiting', function () {
 })->name('waiting');
 // liaison avec le controleurs:
 
+// route pour afficher tous les avions
+Route::get('/avion', [AvionController::class,'AfficherAvions'])->name('avion_all');
 
+// route pour afficher un avion en particulier
+Route::get('/avion/{n}', [AvionController::class, 'AfficherAvion'])->name('avion_detail');
 
 
 
