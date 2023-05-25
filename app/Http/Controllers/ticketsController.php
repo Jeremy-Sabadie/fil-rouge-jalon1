@@ -28,7 +28,7 @@ class ticketsController extends Controller
     }
 
     //fonction new pour la route vers la page de création d'un nouveau ticket:
-    public function new()
+    public function form()
     {
         return view('new_ticket');
     }
@@ -45,10 +45,14 @@ class ticketsController extends Controller
         return view('waiting');
     }
     //route vers la page du détail du ticket.
-    public function detail()
+    public function detailTicket($n)
     {
-        return view('detail');
+        $ticketModel = new AvionModel();
+        $avion = $ticketModel->getone_ticket($n);
+        return view('detail', ['ticket' => $ticket]);
     }
+
+
 
 
 

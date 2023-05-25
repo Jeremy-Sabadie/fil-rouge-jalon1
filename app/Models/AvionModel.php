@@ -14,7 +14,15 @@ class AvionModel extends Model
     {
         return DB::select("select * from AVION");
     }
+    public function getall_tickets()
+    {
+        return DB::select("select * from TICKET");
+    }
     function getone($n)
+    {
+        return DB::selectOne('select * from AVION where AVNO =?;', [$n]);
+    }
+    function getone_ticket($n)
     {
         return DB::selectOne('select * from AVION where AVNO =?;', [$n]);
     }

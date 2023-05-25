@@ -43,7 +43,7 @@ class AvionController extends Controller
 
             return view('creation',['message'=>'avion non créé!']);
         } else {
-            return redirect()->route('avion_detail', ['n' => $avno,])->withMessage('Element créé.');
+            return redirect()->route('avion_detail', ['n' => $avno,])->withMessage('mon message.');
         }
 
 
