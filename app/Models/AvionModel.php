@@ -17,17 +17,19 @@ class AvionModel extends Model
     {
         return DB::selectOne('select * from AVION where AVNO =?;', [$n]);
     }
-    function create($avno, $annom, $capacity, $loc)
-    {//to do gestion des exeptions:
-    // catch(exeption $e){
+    function create($avno, $annom, $capacity, $loc){
+    //to do gestion des exeptions:
 
-    // }
+        try{
         return DB::table('AVION')->insert([
             'AVNO' => $avno,
             'AVNOM' => $avno,
             'AVCAP' => $capacity,
             'AVLOC' => $loc
-        ]);
+        ]);}
+        catch(Exception $e){
+            return false;
+        }
     }
 
 }
