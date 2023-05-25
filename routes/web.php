@@ -47,24 +47,28 @@ Route::get('/waiting', function () {
 })->name('waiting');
 // liaison avec le controleurs:
 
+
+
+// route pour afficher le détail d'un ticket:
+Route::get('/ticket/{n}', [ticketsController::class, 'AfficherAvion'])->name('ticket_detail');
+//========================================================================================
+//--------------------------------------AVION---------------------------------------------
+//========================================================================================
 // route pour afficher tous les avions
-Route::get('/avion', [AvionController::class,'AfficherAvions'])->name('avion_all');
-
-// route pour afficher un avion en particulier
-Route::get('/avion/{n}', [AvionController::class, 'AfficherAvion'])->name('avion_detail');
-
+Route::get('/avion', [AvionController::class, 'AfficherAvions'])->name('avion_all');
 //Route en GET qui dirige via le contôleur vers le formulaire de création:
 Route::get('/create', [AvionController::class, 'toCreate'])->name('avion_form');
+Route::get('/avion/{n}', [AvionController::class, 'detailTicket'])->name('ticket_detail');
 
 //route en post qui apelle le contrôleur avec la fonction create qui envoie le formulaire de céation:
 Route::post('/create', [AvionController::class, 'store'])->name('avion_create');
 Route::get('/create', [AvionController::class, 'new'])->name('avion_form');
 //================================================================================================
-//route en post qui apelle le contrôleur avec la fonction create qui soummet le formulaire de céation:
+//route /new en post qui apelle la fonction create du contrôleur des tickets avec la fonction create qui qui elle apellera la fonction du modèle qui stockera les valeurs des inputs dans la table TICKET:
 Route::post('/new', [ticketsController::class, 'store'])->name('avion_create');
-///new en get pour fournir le fprmulaire de création:
+//route/new en get pour fournir le fprmulaire de création de ticket:
 Route::get('/new', [ticketsController::class, 'form'])->name('new_ticket');
-//Route pour tous les tickets:
+//Route pour tous les tickets faisant appel à la fonction allTickets qui se servira du modèle pour afficher tous les tickets:
 Route::get('/tickets', [AvionController::class, 'allTTickets'])->name('allTickets');
 
 

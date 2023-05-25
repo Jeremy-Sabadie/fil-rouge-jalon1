@@ -10,15 +10,15 @@ class TicketModel extends Model
     use HasFactory;
     public function getallTickets()
     {
-        return DB::select("select * from TICKETS");
+        return DB::select("select * from TICKET");
     }
     function getone($n)
     {
-        return DB::selectOne('select * from AVION where ID =?;', [$n]);
+        return DB::selectOne('select * from TICKET where ID =?;', [$n]);
 }
     function getone_ticket($n)
     {
-        return DB::selectOne('select * from AVION where ID =?;', [$n]);
+        return DB::selectOne('select * from TICKET where ID =?;', [$n]);
 }
     function store($id, $sujet, $idstatus, $typepanne,$cdat,$updat)
     {

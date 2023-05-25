@@ -16,7 +16,7 @@
             <td>{{$ticket->sujet}}</td>
             <td>{{$ticket->idstatus}}</td>
             <td>{{$ticket->cdat}}</td>
-            <td><button type="button"><a href="{{route('detail',['n'=>$ticket->id])}}">Detail</a></button></td>
+            <td><button type="button"><a href="{{route('ticket_detail',['n'=>$ticket->id])}}">Detail</a></button></td>
             <td><img src="/images/alerte.png" alt=""></td>
             <td>....</td>
         </tr>
