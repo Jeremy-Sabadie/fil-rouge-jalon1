@@ -19,7 +19,31 @@ class AvionController extends Controller
     //méthode pour afficher l'avion No $n
     public function AfficherAvion($n) {
         $avionModel = new AvionModel();
-        dd($avionModel->getone($n));
+        $avion = $avionModel->getone($n);
+        return view('avion', ['avion' => $avion]);
     }
+    //route vers le formulaire de céation:
+    public function toCreate() {
+        //retourne la vue contenant le formulaire de création:
+    return view('creation');
+    }
+    public function store(Request $request) {
+        //validation des input
+        //to do vérif des inputs
+        $avno = $request->input('avno');
+        $avnom = $request->input('nom');
+        $capacity = $request->input('capacity');
+        $location = $request->input('location');
+        $avionModel = new AvionModel();
+        $res=$avionModel->create($avno,$avnom,$capacity,$location);
+        // if (!$res)
 
+         return redirect()->route('avion_detail',['n'=>$avno,'errormessage'=>'avion non créé!']);
+        // }
+        // else{
+
+        // }
+    //}
+
+    }
 }
