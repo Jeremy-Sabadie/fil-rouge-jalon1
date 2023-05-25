@@ -1,5 +1,8 @@
 @extends('home')
 @section('content')
+    @if (session()->has('message'))
+        {{session('message')}}
+    @endif
     <h3>détail de l'avion</h3>
     <table>
         <thead>

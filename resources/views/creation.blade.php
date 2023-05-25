@@ -1,6 +1,8 @@
-
 @extends('templates.home')
 
 @section('content')
-@include('components.create_form')
+    @isset($message)
+        {{ $message }}
+    @endif
+    @include('components.create_form')
 @endsection
