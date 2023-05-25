@@ -64,5 +64,7 @@ Route::get('/create', [AvionController::class, 'new'])->name('avion_form');
 Route::post('/new', [ticketsController::class, 'store'])->name('avion_create');
 ///new en get pour fournir le fprmulaire de création:
 Route::get('/new', [ticketsController::class, 'form'])->name('new_ticket');
+//Route pour tous les tickets:
+Route::get('/tickets', [AvionController::class, 'allTTickets'])->name('allTickets');
 
 

@@ -15,9 +15,10 @@
                     <a href="{{ route('all') }}">mes tickets</a>
                     <ul class="dropdown-menu">
                         <!-- dropdown list-items  -->
-                        <li><a href="{{ route('all') }}">Tous les tickets</a></li>
+                        <li><a href="{{ route('allTickets') }}">Tous les tickets</a></li>
                         <li><a href="{{ route('waiting') }}">tickets en attentes</a></li>
                         <li><a href="{{ route('close') }}">tickets fermés</a></li>
+                        <li><a href="{{ route('new_ticket') }}">nouveau ticket</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ route('home') }}">Accueil</a></li>
