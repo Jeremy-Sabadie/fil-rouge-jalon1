@@ -4,13 +4,13 @@
     @endif
 <h3>Tous vos tickets</h3>
 <table>
-        <tbody>
+        <thead>
             <th>ID_TICKET</th>
             <th>SUJET</th>
-            <th>ID8STATUS</th>
+            <th>ID_STATUS</th>
             <th>DATE_CREATION</th>
             <th>DETAIL</th>
-        </tbody>
+        </thead>
         <tr>
             <td>{{$ticket->id}}</td>
             <td>{{$ticket->sujet}}</td>
