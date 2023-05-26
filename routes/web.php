@@ -53,7 +53,7 @@ Route::get('/test', function () {
 
 
 // route pour afficher le détail d'un ticket:
-Route::get('/ticket/{n}', [ticketsController::class, 'AfficherAvion'])->name('ticket_detail');
+Route::get('/ticket/{n}', [ticketsController::class, 'detailTicket'])->name('ticket_detail');
 //========================================================================================
 //--------------------------------------AVION---------------------------------------------
 //========================================================================================
@@ -61,7 +61,7 @@ Route::get('/ticket/{n}', [ticketsController::class, 'AfficherAvion'])->name('ti
 Route::get('/avion', [AvionController::class, 'AfficherAvions'])->name('avion_all');
 //Route en GET qui dirige via le contôleur vers le formulaire de création:
 Route::get('/create', [AvionController::class, 'toCreate'])->name('avion_form');
-Route::get('/avion/{n}', [AvionController::class, 'detailTicket'])->name('ticket_detail');
+Route::get('/avion/{n}', [AvionController::class, 'detailTicket'])->name('avion_detail');
 
 //route en post qui apelle le contrôleur avec la fonction create qui envoie le formulaire de céation:
 Route::post('/create', [AvionController::class, 'store'])->name('avion_create');

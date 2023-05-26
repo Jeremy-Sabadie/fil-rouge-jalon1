@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;//ligne qui permettra de récupérer la date actuelle pous la colone de la date de création du ticket.
+use Carbon\Carbon; //ligne qui permettra de récupérer la date actuelle pous la colone de la date de création du ticket.
 use Illuminate\Http\Request;
 use App\Models\TicketModel;
+
 class ticketsController extends Controller
 {
     //fonction home pour la route vers la page de tous l'acceuil.
@@ -58,28 +59,27 @@ class ticketsController extends Controller
 
 
         // Récupération des différentes valeurs des inputs du formulaire dans des variables.
-        $id = $request->input('id');
         $idstatus = $request->input('idstatus');
         $sujet = $request->input('sujet');
         $typepanne = $request->input('typepanne');
+        $cdat = Carbon::now(); // Date actuelle
 
-        // Date actuelle
-        $cdat = Carbon::now();
         //Nouvelle instance de la classe ticketModel*:
         $ticketModel = new TicketModel();
-        $res = $ticketModel->create($id, $sujet, $idstatus, $typepanne, $cdat);
+        $res = $ticketModel->store($sujet, $idstatus, $typepanne, $cdat);
         //Si la la création est retournée false on renvoie ver le formulaire de céation avec un message d'erreur
         if (!$res) {
             return view('new_ticket', ['message' => 'Ticket non créé !']);
             //Sinon on renvoi vers le détail du ticket créé avec un message:
         } else {
-            return redirect()->route('ticket_detail', ['n' => $id])->withMessage('Ticket créé');
+            return redirect()->route('ticket_detail', ['n' => $res])->withMessage('Ticket créé');
         }
     }
     //Fonction qui créer une nouvelle instance d u modèle des tickets et qui retourne le résultat de la fonction chargée de récupérer tous les éléments de la table des tickets.
-    public function all_tickets() {
-    $ticketModel= new TicketModel();
-    return $ticketModel->getallTickets();
+    public function all_tickets()
+    {
+        $ticketModel = new TicketModel();
+        return $ticketModel->getallTickets();
     }
 
 

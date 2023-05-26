@@ -1,4 +1,5 @@
 @import"body_red";
+
 html {
     box-sizing: border-box;
 }
@@ -78,6 +79,7 @@ body#sign {
             margin-top: 10px;
             object-fit: cover;
         }
+
         img {
             width: 80px;
             height: 80px;
@@ -91,7 +93,7 @@ body#home {
     background-color: black;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr 200px;
     grid-template-areas:
         "header header"
         "aside main"
@@ -263,46 +265,47 @@ body#home {
         object-fit: cover;
 
     }
-        /*Start of the table style:*/
-        main table {
-            width: 50vw;
-            margin-top: 30px;
-            height: fit-content;
-            border: wheat 1.5px dashed;
-        }
 
-        main table tr {
-            width: 100%;
-            height: 30px;
+    /*Start of the table style:*/
+    main table {
+        width: 50vw;
+        margin-top: 30px;
+        height: fit-content;
+        border: wheat 1.5px dashed;
+    }
 
-        }
+    main table tr {
+        width: 100%;
+        height: 30px;
 
-        main table tr td {
-            padding: 0;
-            margin: 0;
-            width: 50%;
-            text-align: center;
-            text-transform: uppercase;
-            font-weight: bolder;
-            background-color: wheat;
-            color: #0c0a0a;
-            margin-top: 7px;
+    }
 
-        }
+    main table tr td {
+        padding: 0;
+        margin: 0;
+        width: 50%;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bolder;
+        background-color: wheat;
+        color: #0c0a0a;
+        margin-top: 7px;
 
-        main table tr th {
-            padding: 0;
-            margin: 0;
-            width: 50%;
-            text-align: center;
-            text-transform: uppercase;
-            text-decoration: underline;
-            background-color: wheat;
-            color: #0c0a0a;
-            margin-top: 7px;
-        }
+    }
 
-        /*End of the table style:*/
+    main table tr th {
+        padding: 0;
+        margin: 0;
+        width: 50%;
+        text-align: center;
+        text-transform: uppercase;
+        text-decoration: underline;
+        background-color: wheat;
+        color: #0c0a0a;
+        margin-top: 7px;
+    }
+
+    /*End of the table style:*/
     /*footer style:*/
     footer {
         grid-area: footer;
@@ -313,142 +316,146 @@ body#home {
         display: flex;
         justify-content: space-between;
     }
-        @media only screen and (max-width: 640px) {
-            main table{
-                width: 40%;
-            }
-            footer {
-                    grid-area: footer;
 
-                    background-color: #72a1f9;
-                    color: white;
-        }
+    @media only screen and (max-width: 640px) {
 
-    footer ul {
-        height: 100%;
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    footer ul li a {
-        text-decoration: underline;
-        color: beige;
-    }
-
-    footer ul li a:visited {
-        color: white;
-        text-decoration: none;
-    }
-
-    /*start of the displays's style under 640px  :*/
-    @media screen and (max-width: 640px) {
-        nav ul li img {
-            width: 20px;
-            height: 20px;
-            object-fit: cover;
-        }
-
-
-        aside ul li {
-            width: 100%;
-            height: fit-content;
-            border: darkgrey solid 2px;
-        }
-
-        aside ul li a button {
-            width: fit-content;
-            height: 50%;
-            color: beige;
-        }
-
-        main>img {
-            height: 30%;
-        }
-
-
-        /*start of the displays's style under 640px for the nav bar  :*/
-        nav {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: end;
-        }
-
-        nav ul {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: end;
-            padding: 0;
-        }
-
-        nav input {
-            width: 50%;
-        }
-
-        nav img {
-            width: 10%;
-            height: 10%;
-            object-fit: fill;
-        }
-
-        nav form {
-            width: 100%;
-            height: 20%;
-            margin-left: auto;
-            margin-right: 40%;
-        }
-
-        form label {
-            display: none;
-        }
-
-        nav:first-child {
-            font-size: small;
-        }
-
-        nav ul {
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: space-evenly;
-            align-items: end;
-        }
-
-        nav ul img {
-            scale: 0.6;
-        }
-
-        /*end of the responsive style to the navbar.*/
-        aside {
-            padding: 0;
-        }
-
-        aside ul li {
-            width: 100%;
-            margin: 0;
-            font-size: smaller;
-        }
-
-        aside ul li :no-button {
-            margin-left: 10px;
+        main table {
+            width: 40%;
         }
 
         footer {
-            margin-top: 10px;
+            grid-area: footer;
+            // max-height: 20%;
+            background-color: #72a1f9;
+            color: white;
+        }
+
+        footer ul {
+            height: 100%;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        footer ul li a {
+            text-decoration: underline;
+            color: beige;
+        }
+
+        footer ul li a:visited {
+            color: white;
+            text-decoration: none;
+        }
+
+        /*start of the displays's style under 640px  :*/
+        @media screen and (max-width: 640px) {
+            nav ul li img {
+                width: 20px;
+                height: 20px;
+                object-fit: cover;
+            }
+
+
+            aside ul li {
+                width: 100%;
+                height: fit-content;
+                border: darkgrey solid 2px;
+            }
+
+            aside ul li a button {
+                width: fit-content;
+                height: 50%;
+                color: beige;
+            }
+
+            main>img {
+                height: 30%;
+            }
+
+
+            /*start of the displays's style under 640px for the nav bar  :*/
+            nav {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: end;
+            }
+
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: end;
+                padding: 0;
+            }
+
+            nav input {
+                width: 50%;
+            }
+
+            nav img {
+                width: 10%;
+                height: 10%;
+                object-fit: fill;
+            }
+
+            nav form {
+                width: 100%;
+                height: 20%;
+                margin-left: auto;
+                margin-right: 40%;
+            }
+
+            form label {
+                display: none;
+            }
+
+            nav:first-child {
+                font-size: small;
+            }
+
+            nav ul {
+                display: flex;
+                flex-direction: column-reverse;
+                justify-content: space-evenly;
+                align-items: end;
+            }
+
+            nav ul img {
+                scale: 0.6;
+            }
+
+            /*end of the responsive style to the navbar.*/
+            aside {
+                padding: 0;
+            }
+
+            aside ul li {
+                width: 100%;
+                margin: 0;
+                font-size: smaller;
+            }
+
+            aside ul li :no-button {
+                margin-left: 10px;
+            }
+
+            footer {
+                margin-top: 10px;
+            }
         }
     }
-}
 }
 
 
 
 /*start of the form style: */
-h4{
-margin-top: 0;
-margin-bottom: 7%;
+h4 {
+    margin-top: 0;
+    margin-bottom: 7%;
 }
+
 main form {
     width: 150px;
     height: 100px;
@@ -495,19 +502,21 @@ table {
 
 }
 
-table{
+table {
     width: 40%;
     height: 60%;
     margin-left: auto;
     margin-right: auto;
 }
-table tr{
+
+table tr {
     width: 100%;
     height: auto;
 
 }
 
-table th,td {
+table th,
+td {
     width: calc(100%/3);
     height: calc(100%/3);
 
@@ -518,12 +527,13 @@ table th,td {
 
 table tr td {
     width: calc(100%/3);
-    height:calc(100%/3);
+    height: calc(100%/3);
     margin: 0;
 
 }
+
 @media only screen and (max-width: 640px) {
-table {
+    table {
         font-size: smaller;
         width: 90px;
         height: 150px;

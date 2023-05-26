@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class TicketModel extends Model
 {
@@ -15,24 +16,23 @@ class TicketModel extends Model
     function getone($n)
     {
         return DB::selectOne('select * from TICKET where ID =?;', [$n]);
-}
+    }
     function getone_ticket($n)
     {
         return DB::selectOne('select * from TICKET where ID =?;', [$n]);
-}
-    function store($id, $sujet, $idstatus, $typepanne,$cdat,$updat)
+    }
+    function store($sujet, $idstatus, $typepanne, $cdat)
     {
         //to do gestion des exeptions:
 
         try {
-            DB::table('TICKET')->insert([
-                'ID' => $id,
+            $id = DB::table('TICKET')->insertGetId([
                 'SUJET' => $sujet,
-                'ID8STATUS' => $idstatus,
+                'ID_STATUS' => $idstatus,
                 'ID_TYPE_PANNE' => $typepanne,
-                'CREATEDAT' => $cdat,
-                'UPDATED_AT' => $updat
+                'CREATED_AT' => $cdat,
             ]);
+            return $id;
         } catch (Exception $e) {
             return false;
         }
