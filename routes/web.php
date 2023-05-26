@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| be assigned to the "web"  group. Make something great!
 |
 */
 use App\Http\Controllers\ticketsController;
@@ -22,31 +22,34 @@ Route::get('/signin', [ticketsController::class, 'signin'])->name('signin');
 //route vers la page de création de compte.
 Route::get('/signup', [ticketsController::class, 'signup'])->name('signup');
 //route vers la page d'acceuil utilisateur.
-Route::get('/home', [ticketsController::class, 'home'])->name('home');
+Route::get('/home', [ticketsController::class, 'home'])->name('home')->middleware('auth');
 //route vers la page de tous les tickets.
 Route::get('/all', [ticketsController::class, 'getall_tickets'])->name('all');
 //route vers la page de dréation de ticket.
 Route::get('/detail', [ticketsController::class, 'getone_ticket'])->name('detail');
 //route vers la page des tickets fermés
-Route::get('/', function () {
-    return view('close');
+Route::get('/closed', function () {
+    return view('closed_tickets')->middleware('auth');
 })->name('close');
-//route vers la page des tickets en attente.
-Route::get('/waiting', function () {
-    return view('waiting');
-})->name('waiting');
+
 //route vers la page de recherche de ticket par filtre.
 Route::get('/search', function () {
-    return view('search');
+    return view('search')->middleware('auth');
 })->name('search');
-Route::get('/closed', function () {
-    return view('close');
-})->name('close');
-Route::get('/waiting', function () {
-    return view('waiting');
-})->name('waiting');
-// liaison avec le controleurs:
+Route::get('/closed', [ticketsController::class, 'signup'])->name('close')->middleware('auth');
 
+
+//route vers la page des tickets en attente.
+Route::get('/waiting', function () {
+    return view('waiting_tickets')->middleware('auth');
+})->name('waiting');
+//page de connection fournie par fortify:
+Route::get('/', function () {
+    return view('welcome');
+}); //Fortify: route qui renvoie vers la page acceuil si l'utilisateur seulement si connecté.
+Route::get('/test', function () {
+    return 'acceuil';
+})->middleware('auth');
 
 
 // route pour afficher le détail d'un ticket:
@@ -70,5 +73,3 @@ Route::post('/new', [ticketsController::class, 'store'])->name('avion_create');
 Route::get('/new', [ticketsController::class, 'form'])->name('new_ticket');
 //Route pour tous les tickets faisant appel à la fonction allTickets qui se servira du modèle pour afficher tous les tickets:
 Route::get('/tickets', [AvionController::class, 'allTTickets'])->name('allTickets');
-
-

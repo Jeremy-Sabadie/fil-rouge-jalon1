@@ -37,7 +37,7 @@ class ticketsController extends Controller
     //Page des tickets fermés
     public function close()
     {
-        return view('close');
+        return view('closed_tickets');
     }
 
     //route vers la page des tickets en attente.
@@ -55,12 +55,7 @@ class ticketsController extends Controller
 
     public function store(Request $request)
     {
-        // Validation des inputs
-        $validatedData = $request->validate([
-            // 'idstatus' => 'required',
-            // 'sujet' => 'required',
-            // 'typepanne' => 'required',
-        ]);
+
 
         // Récupération des différentes valeurs des inputs du formulaire dans des variables.
         $id = $request->input('id');

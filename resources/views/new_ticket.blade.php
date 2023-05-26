@@ -4,6 +4,7 @@
         <h4>TDéclarer un nouveau ticket*</h4>
         <img src="../images/logo_amio.png" alt="logo">
         <form action="" method="post">
+            {{-- @csrf --}}
             <label for="sujet">sujet du ticket</label>
             <input type="text" name="sujet" id="sujet">
 

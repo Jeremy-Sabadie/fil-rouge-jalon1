@@ -5,6 +5,11 @@
 
 <body id="home">
     <header>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+
+            <button type="submit">Se déconnecter</button>
+        </form>
         <nav>
             <ul>
                 <li>
