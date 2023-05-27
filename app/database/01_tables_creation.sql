@@ -37,7 +37,7 @@ CREATE TABLE status (
 
 --05 création de la table ".TypePanne" pour gérer les différents types de pannes:
 CREATE TABLE type_panne (
-    id INT AUTO_INCREMENT,--primary key
+   PRIMARYk id INT AUTO_INCREMENT,--primary key
     label VARCHAR(20),
     );
 
