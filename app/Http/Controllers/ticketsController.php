@@ -86,11 +86,15 @@ class ticketsController extends Controller
 
     public function one_ticket($n) {
    $one_ticket_model=new ticketsModel();
-   return view('detail',['ticket'=>$n]);
+   $ticket=$one_ticket_model->getone_ticket;
+   return view('detail',['ticket'=>$ticket]);
 
     }
 
-
-
-
+    # code...
 }
+
+
+
+
+

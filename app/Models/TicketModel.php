@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class TicketModel extends Model
 {
     use HasFactory;
-    public function getallTickets(){
+    public function getallTickets()
     {
         return DB::select("select * from ticket");
     }
@@ -39,4 +39,5 @@ class TicketModel extends Model
         return true;
     }
 }
-}
+
+
