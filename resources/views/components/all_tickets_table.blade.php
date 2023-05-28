@@ -14,10 +14,10 @@
         <tbody>
             <tr>
                 @forelse ($tickets as $ticket )
-                <td>{{ $tickets->id }}</td>
+                <td>{{ $ticket->id }}</td>
                 <td>{{$ticket->sujet}}</td>
-                <td>{{$ticket->idstatus}}</td>
-                <td>{{$ticket->cdat}}</td>
+                {{-- <td>{{$ticket->idstatus}}</td> --}}
+                {{-- <td>{{$ticket->cdat}}</td> --}}
                 <td><button type="button"><a href="{{route('ticket_detail',['n'=>$ticket->id])}}">Detail</a></button></td>
                 <td><img src="/images/alerte.png" alt=""></td>
                 <td>....</td>
@@ -31,32 +31,26 @@
 
 @extends('home')
 @section('content')
-<h3>liste des tickets</h3>
 <table>
     <thead>
         <tr>
-            <td>NUMERO</td>
-            <td>SUJET</td>
-            <td>DATE DE CREATION</td>
-
+            <th>ID</th>
+            <th>Sujet</th>
+            <th>Status</th>
+            {{-- <th>Type de Panne</th>
+            <th>Date de Création</th> --}}
         </tr>
     </thead>
     <tbody>
-        @forelse ($tickets as $ticket )
-
-
-
-
+        @foreach ($tickets as $ticket)
         <tr>
-        <td>{{$tickets->id}}</td>
-        <td>{{$$tickets->sujet}}</td>
-        <td>{{$$tickets->created_dat}}</td>
-        <td><button><a href="{{route('avion_detail',['n'=>$$tickets->id])}}">Detail</a></button></td>
-
-    </tr>
-    @empty
-    <p>...</p>
-    @endforelse
+            <td>{{ $ticket->id }}</td>
+            <td>{{ $ticket->sujet }}</td>
+            {{-- <td>{{ $ticket->id_status }}</td> --}}
+            {{-- <td>{{ $ticket->ID_type_panne }}</td>
+            <td>{{ $ticket->created_dat }}</td> --}}
+        </tr>
+        @endforeach
     </tbody>
 </table>
 @endsection
