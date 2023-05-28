@@ -1,4 +1,4 @@
-<h3>résumé du ticket:#{{ $ticket->ID }}</h3>
+<h3>résumé du ticket: #{{ $ticket->id }}</h3>
 <table>
     <thead>
         <tr>
@@ -8,9 +8,9 @@
         </tr>
     </thead>
     <tr>
-        <th>#{{ $ticket->ID }}</th>
-        <th>{{ $ticket->SUJET }}</th>
-        <th>{{ $ticket->CREATED_AT }}</th>
+        <th>#{{ $ticket->id }}</th>
+        <th>{{ $ticket->sujet }}</th>
+        <th>{{ $ticket->created_dat }}</th>
     </tr>
 
 </table>

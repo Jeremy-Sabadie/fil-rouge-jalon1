@@ -15,22 +15,22 @@ class TicketModel extends Model
     }
     function getone($n)
     {
-        return DB::selectOne('select * from TICKET where ID =?;', [$n]);
+        return DB::selectOne('select * from ticket where id =?;', [$n]);
     }
     function getone_ticket($n)
     {
-        return DB::selectOne('select * from TICKET where ID =?;', [$n]);
+        return DB::selectOne('select * from ticket where ID =?;', [$n]);
     }
     function store($sujet, $idstatus, $typepanne, $cdat)
     {
         //to do gestion des exeptions:
 
         try {
-            $id = DB::table('TICKET')->insertGetId([
-                'SUJET' => $sujet,
-                'ID_STATUS' => $idstatus,
-                'ID_TYPE_PANNE' => $typepanne,
-                'CREATED_AT' => $cdat,
+            $id = DB::table('ticket')->insertGetId([
+                'sujet' => $sujet,
+                'id_status' => $idstatus,
+                'ID_type_panne' => $typepanne,
+                'created_dat' => $cdat,
             ]);
             return $id;
         } catch (Exception $e) {

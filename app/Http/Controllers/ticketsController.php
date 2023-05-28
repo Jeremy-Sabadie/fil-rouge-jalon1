@@ -58,7 +58,7 @@ class ticketsController extends Controller
     {
 
 
-        // Récupération des différentes valeurs des inputs du formulaire dans des variables.
+        // Récupération des différentes valeurs des inputs du formulaire dans des variables.Ces variables seront données au modèle pour qu'il les range dans la base de dnnées.
         $idstatus = $request->input('idstatus');
         $sujet = $request->input('sujet');
         $typepanne = $request->input('typepanne');
