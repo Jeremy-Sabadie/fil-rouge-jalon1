@@ -1,5 +1,11 @@
-@extends('layouts.app')
+@extends('templates.signtemplate')
 
+@section('title')
+    Sign in
+@endsection
+
+@section('content')
+<img src="/images/logo_amio.png" alt="logo">
 @section('content')
     @if ($errors->any())
         <div>
