@@ -44,5 +44,5 @@ CREATE TABLE type_panne (
 --06 création de la table "TicketMateriel" pour gérer les différents matériels:
 CREATE TABLE ticket_materiel (
     id_ticket INT ,--primary key
-    id_materiels INT,-- forein key
+    id_materiels INT,
     );
