@@ -37,7 +37,7 @@ Route::get('/search', function () {
     return view('search')->middleware('auth');
 })->name('search');
 Route::get('/closed', [ticketsController::class, 'signup'])->name('close')->middleware('auth');
-
+Route::get('/all',[ticketsController::class,'allTickets'])->name('all');
 
 //route vers la page des tickets en attente.
 Route::get('/waiting', function () {

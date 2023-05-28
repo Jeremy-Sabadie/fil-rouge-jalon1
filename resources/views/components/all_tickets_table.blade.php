@@ -11,21 +11,22 @@
             <th>DATE_CREATION</th>
             <th>DETAIL</th>
         </thead>
-        <tr>
-            <td>{{$ticket->id}}</td>
-            <td>{{$ticket->sujet}}</td>
-            <td>{{$ticket->idstatus}}</td>
-            <td>{{$ticket->cdat}}</td>
-            <td><button type="button"><a href="{{route('ticket_detail',['n'=>$ticket->id])}}">Detail</a></button></td>
-            <td><img src="/images/alerte.png" alt=""></td>
-            <td>....</td>
-        </tr>
-        <tr>
-            <td>#0008</td>
-            <td>08/03/2023</td>
-            <td><img src="/images/fait.png" alt="green"></td>
-            <td>....</td>
-        </tr>
+        <tbody>
+            <tr>
+                @forelse ($tickets as $ticket )
+                <td>{{ $tickets->id }}</td>
+                <td>{{$ticket->sujet}}</td>
+                <td>{{$ticket->idstatus}}</td>
+                <td>{{$ticket->cdat}}</td>
+                <td><button type="button"><a href="{{route('ticket_detail',['n'=>$ticket->id])}}">Detail</a></button></td>
+                <td><img src="/images/alerte.png" alt=""></td>
+                <td>....</td>
+            </tr>
+    @empty
+    <p>...</p>
+    @endforelse
+    </tbody>
+        </tbody>
     </table>
 
 @extends('home')

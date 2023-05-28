@@ -80,7 +80,7 @@ class ticketsController extends Controller
     {
         $ticketsModel = new TicketModel();
         $tickets = $ticketsModel->getallTickets();
-        return view('all',['ticket'=>$tickets]);
+        return view('all',['tickets'=>$tickets]);
         //return $ticketsModel->getallTickets();
     }
 
