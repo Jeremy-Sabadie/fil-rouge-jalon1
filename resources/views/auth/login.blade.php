@@ -39,6 +39,7 @@
 
         <div>
             <button type="submit">Se connecter</button>
+            <a href="{{ route('register') }}"> déjà un compte</a>
         </div>
     </form>
 @endsection

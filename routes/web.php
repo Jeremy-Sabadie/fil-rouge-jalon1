@@ -24,7 +24,7 @@ Route::get('/signup', [ticketsController::class, 'signup'])->name('signup');
 //route vers la page d'acceuil utilisateur.
 Route::get('/home', [ticketsController::class, 'home'])->name('home')->middleware('auth');
 //route vers la page de tous les tickets.
-Route::get('/all', [ticketsController::class, 'getall_tickets'])->name('all');
+Route::get('/tickets', [ticketsController::class, 'allTickets'])->name('all_tickets');
 //route vers la page de dréation de ticket.
 Route::get('/detail', [ticketsController::class, 'getone_ticket'])->name('detail');
 //route vers la page des tickets fermés
@@ -72,4 +72,4 @@ Route::post('/new', [ticketsController::class, 'store'])->name('avion_create');
 //route/new en get pour fournir le fprmulaire de création de ticket:
 Route::get('/new', [ticketsController::class, 'form'])->name('new_ticket');
 //Route pour tous les tickets faisant appel à la fonction allTickets qui se servira du modèle pour afficher tous les tickets:
-Route::get('/tickets', [AvionController::class, 'allTTickets'])->name('allTickets');
+//Route::get('/tickets', [ticketController::class, 'allTTickets'])->name('allTickets');

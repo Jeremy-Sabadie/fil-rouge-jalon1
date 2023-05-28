@@ -17,10 +17,10 @@
                 </li>
                 <!-- main item of dropdown menu  -->
                 <li class="dropdown">
-                    <a href="{{ route('all') }}">mes tickets</a>
+                    <a href="{{ route('all_tickets') }}">mes tickets</a>
                     <ul class="dropdown-menu">
                         <!-- dropdown list-items  -->
-                        <li><a href="{{ route('allTickets') }}">Tous les tickets</a></li>
+                        <li><a href="{{ route('all_tickets') }}">Tous les tickets</a></li>
                         <li><a href="{{ route('waiting') }}">tickets en attentes</a></li>
                         <li><a href="{{ route('close') }}">tickets fermés</a></li>
                         <li><a href="{{ route('new_ticket') }}">nouveau ticket</a></li>
@@ -35,7 +35,7 @@
                 </li>
                 <li><a href="#">À propos</a></li>
                 <li><a href="#"><img src="../images/profile.jpeg" alt="photo de profil"></a>
-                    <p>user #0000</p>
+                    <p>$users_name</p>
                 </li>
             </ul>
         </nav>

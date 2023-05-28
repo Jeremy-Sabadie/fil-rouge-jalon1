@@ -27,3 +27,35 @@
             <td>....</td>
         </tr>
     </table>
+
+@extends('home')
+@section('content')
+<h3>liste des tickets</h3>
+<table>
+    <thead>
+        <tr>
+            <td>NUMERO</td>
+            <td>SUJET</td>
+            <td>DATE DE CREATION</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        @forelse ($tickets as $ticket )
+
+
+
+
+        <tr>
+        <td>{{$tickets->id}}</td>
+        <td>{{$$tickets->sujet}}</td>
+        <td>{{$$tickets->created_dat}}</td>
+        <td><button><a href="{{route('avion_detail',['n'=>$$tickets->id])}}">Detail</a></button></td>
+
+    </tr>
+    @empty
+    <p>...</p>
+    @endforelse
+    </tbody>
+</table>
+@endsection

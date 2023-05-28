@@ -75,13 +75,20 @@ class ticketsController extends Controller
             return redirect()->route('ticket_detail', ['n' => $res])->withMessage('Ticket créé');
         }
     }
-    //Fonction qui créer une nouvelle instance d u modèle des tickets et qui retourne le résultat de la fonction chargée de récupérer tous les éléments de la table des tickets.
-    public function all_tickets()
+    //Fonction qui créer une nouvelle instance du modèle des tickets et qui retourne le résultat de la fonction chargée de récupérer tous les éléments de la table des tickets.
+    public function allTickets()
     {
-        $ticketModel = new TicketModel();
-        return $ticketModel->getallTickets();
+        $ticketsModel = new TicketModel();
+        $tickets = $ticketsModel->getallTickets();
+        return view('all',['ticket'=>$tickets]);
+        //return $ticketsModel->getallTickets();
     }
 
+    public function one_ticket($n) {
+   $one_ticket_model=new ticketsModel();
+   return view('detail',['ticket'=>$n]);
+
+    }
 
 
 

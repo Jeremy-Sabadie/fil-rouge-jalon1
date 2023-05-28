@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\DB;
 class TicketModel extends Model
 {
     use HasFactory;
-    public function getallTickets()
+    public function getallTickets(){
     {
-        return DB::select("select * from TICKET");
+        return DB::select("select * from ticket");
     }
     function getone($n)
     {
@@ -38,4 +38,5 @@ class TicketModel extends Model
         }
         return true;
     }
+}
 }
