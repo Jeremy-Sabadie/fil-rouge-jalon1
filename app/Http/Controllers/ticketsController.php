@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Carbon\Carbon; //ligne qui permettra de récupérer la date actuelle pous la colone de la date de création du ticket.
 use Illuminate\Http\Request;
 use App\Models\TicketModel;
@@ -77,12 +78,12 @@ class ticketsController extends Controller
     }
     //Fonction qui créer une nouvelle instance du modèle des tickets et qui retourne le résultat de la fonction chargée de récupérer tous les éléments de la table des tickets.
     public function allTickets()
-    {
-        $ticketsModel = new TicketModel();
-        $tickets = $ticketsModel->getallTickets();
-        return view('all',['tickets'=>$tickets]);
-        //return $ticketsModel->getallTickets();
-    }
+{
+    $ticketModel = new TicketModel();
+    $tickets = $ticketModel->getallTickets();
+    return view('all', ['tickets' => $tickets]);
+}
+
 
     public function one_ticket($n) {
    $one_ticket_model=new ticketsModel();

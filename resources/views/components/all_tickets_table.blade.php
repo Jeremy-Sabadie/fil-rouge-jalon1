@@ -36,7 +36,9 @@
         <tr>
             <th>ID</th>
             <th>Sujet</th>
+            <th>dat de création</th>
             <th>Status</th>
+            <th>détail</th>
             {{-- <th>Type de Panne</th>
             <th>Date de Création</th> --}}
         </tr>
@@ -46,9 +48,13 @@
         <tr>
             <td>{{ $ticket->id }}</td>
             <td>{{ $ticket->sujet }}</td>
-            {{-- <td>{{ $ticket->id_status }}</td> --}}
-            {{-- <td>{{ $ticket->ID_type_panne }}</td>
-            <td>{{ $ticket->created_dat }}</td> --}}
+            <td>{{ $ticket->created_dat }}</td>
+            <td>
+                <form action="{{route('detail',['n'=>$ticket->id])}}" method="get">
+                    <button>détail
+                    </button>
+                </form>
+                </td>
         </tr>
         @endforeach
     </tbody>
