@@ -26,7 +26,7 @@ Route::get('/home', [ticketsController::class, 'home'])->name('home')->middlewar
 //route vers la page de tous les tickets.
 Route::get('/tickets', [ticketsController::class, 'allTickets'])->name('all_tickets');
 //route vers la page de dréation de ticket.
-Route::get('/detail', [ticketsController::class, 'getone_ticket'])->name('detail');
+Route::get('/detail', [ticketsController::class, 'detailTicket'])->name('detail');
 //route vers la page des tickets fermés
 Route::get('/closed', function () {
     return view('closed_tickets')->middleware('auth');
@@ -68,7 +68,7 @@ Route::post('/create', [AvionController::class, 'store'])->name('avion_create');
 Route::get('/create', [AvionController::class, 'new'])->name('avion_form');
 //================================================================================================
 //route /new en post qui apelle la fonction create du contrôleur des tickets avec la fonction create qui qui elle apellera la fonction du modèle qui stockera les valeurs des inputs dans la table TICKET:
-Route::post('/new', [ticketsController::class, 'store'])->name('avion_create');
+Route::post('/new', [ticketsController::class, 'store'])->name('avion_create')->middleware('auth');
 //route/new en get pour fournir le fprmulaire de création de ticket:
 Route::get('/new', [ticketsController::class, 'form'])->name('new_ticket');
 //Route pour tous les tickets faisant appel à la fonction allTickets qui se servira du modèle pour afficher tous les tickets:
