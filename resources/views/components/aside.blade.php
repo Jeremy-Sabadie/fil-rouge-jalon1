@@ -1,14 +1,17 @@
 <aside>
         <h2>Mes tickets</h2>
         <ul>
-            <li>Ticket n° 1 :<img src="../images/alerte.png" alt="point vert"><a href=""><button>voir le ticket</button></a>
-            </li>
+           @forelse ($tickets as $ticket)
 
-            <li>Ticket n° 2 :<img src="../images/warning.png" alt="point rouge"><a href="#"><button>voir le ticket</button></a>
-            </li>
+                    <li><tr>
+                        <td>{{ $ticket->id }}</td><td>{{ $ticket->sujet }}</td><td>{{ $ticket->created_dat }}</td><td><li><img src="/images/alerte.png" alt=""></td>
+                    </tr>
 
-            <li>Ticket n° 3 :<img src="../images/fait.png" alt="orange logo"><a href=""><button>voir le ticket</button></a>
-            </li>
 
+
+                    <li><button type="button"><a href="{{ route('ticket_detail', ['n' => $ticket->id]) }}">Detail</a></button></li>
+                    @empty
+                <p>...</p>
+            @endforelse
         </ul>
     </aside>

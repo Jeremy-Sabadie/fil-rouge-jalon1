@@ -12,7 +12,9 @@ class ticketsController extends Controller
     //fonction home pour la route vers la page de tous l'acceuil.
     public function home()
     {
-        return view('home');
+        $ticketModel = new TicketModel();
+        $tickets = $ticketModel->getallTickets();
+        return view('home', ['tickets' => $tickets]);
     }
     //fonction home pour la route vers la page de conection.
     public function signup()
@@ -33,7 +35,9 @@ class ticketsController extends Controller
     //fonction new pour la route vers la page de création d'un nouveau ticket:
     public function form()
     {
-        return view('new_ticket');
+        $ticketModel = new TicketModel();
+        $tickets = $ticketModel->getallTickets();
+        return view('new_ticket',['tickets'=>$tickets]);
     }
     //fonction close pour la page des tickets fermés:
     //Page des tickets fermés
@@ -52,7 +56,8 @@ class ticketsController extends Controller
     {
         $ticketModel = new ticketModel();
         $ticket = $ticketModel->getone_ticket($n);
-        return view('detail', ['ticket' => $ticket]);
+        $tickets = $ticketModel->getallTickets();
+        return view('detail', ['ticket' => $ticket, 'tickets' => $tickets]);
     }
 
     public function store(Request $request)
@@ -68,9 +73,12 @@ class ticketsController extends Controller
         //Nouvelle instance de la classe ticketModel*:
         $ticketModel = new TicketModel();
         $res = $ticketModel->store($sujet, $idstatus, $typepanne, $cdat);
+        $ticketModel = new TicketModel();
+        $tickets = $ticketModel->getallTickets();
         //Si la la création est retournée false on renvoie ver le formulaire de céation avec un message d'erreur
         if (!$res) {
-            return view('new_ticket', ['message' => 'Ticket non créé !']);
+
+            return view('new_ticket', ['message' => 'Ticket non créé !', 'tickets' => $tickets]);
             //Sinon on renvoi vers le détail du ticket créé avec un message:
         } else {
             return redirect()->route('ticket_detail', ['n' => $res])->withMessage('Ticket créé');
@@ -78,26 +86,23 @@ class ticketsController extends Controller
     }
     //Fonction qui créer une nouvelle instance du modèle des tickets et qui retourne le résultat de la fonction chargée de récupérer tous les éléments de la table des tickets.
     public function allTickets()
-{
-    $ticketModel = new TicketModel();
-    $tickets = $ticketModel->getallTickets();
-    return view('all', ['tickets' => $tickets]);
-}
-
-
-    public function one_ticket($n) {
-   $one_ticket_model=new ticketsModel();
-   $ticket=$one_ticket_model->getone_ticket;
-   return view('detail',['ticket'=>$ticket]);
+    {
+        $ticketModel = new TicketModel();
+        $tickets = $ticketModel->getallTickets();
+        return view('all', ['tickets' => $tickets]);
     }
-public function logout(Request $request) {
+
+
+    public function one_ticket($n)
+    {
+        $one_ticket_model = new ticketsModel();
+        $ticket = $one_ticket_model->getone_ticket;
+        return view('detail', ['ticket' => $ticket]);
+    }
+    public function logout(Request $request)
+    {
         Auth()->logout();
         return redirect('/login')->with(['msg_body' => 'You signed out!']);
 
+    }
 }
-}
-
-
-
-
-

@@ -5,7 +5,9 @@
 @endsection
 
 @section('content')
+
 <img src="/images/logo_amio.png" alt="logo">
+<p>{{msg_body}}</p>
 <form action="" method="post">
     @csrf
     <label for="mail">email</label>
