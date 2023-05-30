@@ -21,11 +21,6 @@
                     <td><img src="/images/alerte.png" alt=""></td>
                     <td>{{ $ticket->created_dat }}</td>
                     <td><button type="button"><a href="{{ route('ticket_detail', ['n' => $ticket->id]) }}">Detail</a></button></td>
-
-
-
-
-
                 </tr>
             @empty
                 <p>...</p>

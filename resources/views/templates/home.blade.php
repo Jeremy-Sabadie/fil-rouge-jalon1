@@ -10,8 +10,14 @@
 
             <button type="submit">Se déconnecter</button>
         </form>
+        <form action="" method="post">
+                        @csrf
+                        <label for="search">search bar</label>
+                        <input type="text" id="search" name="search" placeholder="rechercher">
+                        <button type="submit">rechercher</button>
+                    </form>
         <nav>
-            <ul>
+            <ul id="user">
                 <li>
                     <h1>AMIO</h1>
                 </li>
@@ -28,14 +34,11 @@
                 </li>
                 <li><a href="{{ route('home') }}">Accueil</a></li>
                 <li>
-                    <form action="" method="post">
-                        <label for="search">search bar</label>
-                        <input type="text" id="search" name="search" placeholder="search">
-                    </form>
+
                 </li>
                 <li><a href="#">À propos</a></li>
                 <li><a href="#"><img src="../images/profile.jpeg" alt="photo de profil"></a>
-                    <p>{{auth()->user()->name}}</p>
+                    <p>{{ auth()->user()->name }}</p>
                 </li>
             </ul>
         </nav>
