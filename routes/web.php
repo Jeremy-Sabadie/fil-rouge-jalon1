@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AvionController;
 use Illuminate\Support\Facades\Route;
-
+use Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,3 +73,4 @@ Route::post('/new', [ticketsController::class, 'store'])->name('avion_create')->
 Route::get('/new', [ticketsController::class, 'form'])->name('new_ticket');
 //Route pour tous les tickets faisant appel à la fonction allTickets qui se servira du modèle pour afficher tous les tickets:
 //Route::get('/tickets', [ticketController::class, 'allTTickets'])->name('allTickets');
+Route::post('logout', [ticketsController::class, 'logout'])->name('logout');

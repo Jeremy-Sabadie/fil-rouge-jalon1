@@ -89,10 +89,12 @@ class ticketsController extends Controller
    $one_ticket_model=new ticketsModel();
    $ticket=$one_ticket_model->getone_ticket;
    return view('detail',['ticket'=>$ticket]);
-
     }
+public function logout(Request $request) {
+        Auth()->logout();
+        return redirect('/login')->with(['msg_body' => 'You signed out!']);
 
-    # code...
+}
 }
 
 
