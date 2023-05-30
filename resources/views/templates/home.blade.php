@@ -35,7 +35,7 @@
                 </li>
                 <li><a href="#">À propos</a></li>
                 <li><a href="#"><img src="../images/profile.jpeg" alt="photo de profil"></a>
-                    <p>$users_name</p>
+                    <p>{{auth()->user()->name}}</p>
                 </li>
             </ul>
         </nav>
