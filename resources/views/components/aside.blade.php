@@ -3,13 +3,13 @@
         <ul>
            @forelse ($tickets as $ticket)
 
-                    <li><tr>
-                        <td>{{ $ticket->id }}</td><td>{{ $ticket->sujet }}</td><td>{{ $ticket->created_dat }}</td><td><li><img src="/images/alerte.png" alt=""></td>
-                    </tr>
-
-
-
-                    <li><button type="button"><a href="{{ route('ticket_detail', ['n' => $ticket->id]) }}">Detail</a></button></li>
+                <li style="display: block;">
+                    <p>numéro: {{ $ticket->id }}</p>
+                    <p>sujet: {{ $ticket->sujet }}</p>
+                    <p>créé le: {{ $ticket->created_dat }}</p>
+                    <p>status: <img src="/images/alerte.png" alt=""></p>
+                    <button type="button"><a href="{{ route('ticket_detail', ['n' => $ticket->id]) }}">Detail</a></button>
+                </li>
                     @empty
                 <p>...</p>
             @endforelse
