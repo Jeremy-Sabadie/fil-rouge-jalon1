@@ -42,7 +42,7 @@
             <input type="password" name="password_confirmation" required />
         </div>
 
-        <a href="{{ route('login') }}">Déjà enregistré ?</a>
+        <a href="{{ route('login') }}">Déjà enregistré</a>
 
         <div>
             <button type="submit">Enregistrer</button>

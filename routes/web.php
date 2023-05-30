@@ -15,6 +15,40 @@ use Auth;
 */
 use App\Http\Controllers\ticketsController;
 
+
+//page de connection fournie par fortify:
+Route::get('/', function () {
+    return view('welcome');
+}); //Fortify: route qui renvoie vers la page acceuil si l'utilisateur seulement si connecté.
+Route::get('/test', function () {
+    return 'acceuil';
+})->middleware('auth');
+
+
+
+//========================================================================================
+//--------------------------------------AVION---------------------------------------------
+//========================================================================================
+// route pour afficher tous les avions
+Route::get('/avion', [AvionController::class, 'AfficherAvions'])->name('avion_all');
+//Route en GET qui dirige via le contôleur vers le formulaire de création:
+Route::get('/create', [AvionController::class, 'toCreate'])->name('avion_form');
+Route::get('/avion/{n}', [AvionController::class, 'detailTicket'])->name('avion_detail');
+
+//route en post qui apelle le contrôleur avec la fonction create qui envoie le formulaire de céation:
+Route::post('/create', [AvionController::class, 'store'])->name('avion_create');
+Route::get('/create', [AvionController::class, 'new'])->name('avion_form');
+//================================================================================================
+//===============================================TICKET
+//================================================================================================
+//route /new en post qui apelle la fonction create du contrôleur des tickets avec la fonction create qui qui elle apellera la fonction du modèle qui stockera les valeurs des inputs dans la table TICKET:
+Route::post('/new', [ticketsController::class, 'store'])->name('avion_create')->middleware('auth');
+//route/new en get pour fournir le fprmulaire de création de ticket:
+Route::get('/new', [ticketsController::class, 'form'])->name('new_ticket');
+
+Route::post('logout', [ticketsController::class, 'logout'])->name('logout');
+// route pour afficher le détail d'un ticket:
+Route::get('/ticket/{n}', [ticketsController::class, 'detailTicket'])->name('ticket_detail');
 //route vers la page de conection
 Route::get('/signin', [ticketsController::class, 'signin'])->name('signin');
 //route vers la page de conection
@@ -37,40 +71,11 @@ Route::get('/search', function () {
     return view('search')->middleware('auth');
 })->name('search');
 Route::get('/closed', [ticketsController::class, 'signup'])->name('close')->middleware('auth');
-Route::get('/all',[ticketsController::class,'allTickets'])->name('all');
+Route::get('/all', [ticketsController::class, 'allTickets'])->name('all');
 
 //route vers la page des tickets en attente.
 Route::get('/waiting', function () {
     return view('waiting_tickets')->middleware('auth');
 })->name('waiting');
-//page de connection fournie par fortify:
-Route::get('/', function () {
-    return view('welcome');
-}); //Fortify: route qui renvoie vers la page acceuil si l'utilisateur seulement si connecté.
-Route::get('/test', function () {
-    return 'acceuil';
-})->middleware('auth');
-
-
-// route pour afficher le détail d'un ticket:
-Route::get('/ticket/{n}', [ticketsController::class, 'detailTicket'])->name('ticket_detail');
-//========================================================================================
-//--------------------------------------AVION---------------------------------------------
-//========================================================================================
-// route pour afficher tous les avions
-Route::get('/avion', [AvionController::class, 'AfficherAvions'])->name('avion_all');
-//Route en GET qui dirige via le contôleur vers le formulaire de création:
-Route::get('/create', [AvionController::class, 'toCreate'])->name('avion_form');
-Route::get('/avion/{n}', [AvionController::class, 'detailTicket'])->name('avion_detail');
-
-//route en post qui apelle le contrôleur avec la fonction create qui envoie le formulaire de céation:
-Route::post('/create', [AvionController::class, 'store'])->name('avion_create');
-Route::get('/create', [AvionController::class, 'new'])->name('avion_form');
-//================================================================================================
-//route /new en post qui apelle la fonction create du contrôleur des tickets avec la fonction create qui qui elle apellera la fonction du modèle qui stockera les valeurs des inputs dans la table TICKET:
-Route::post('/new', [ticketsController::class, 'store'])->name('avion_create')->middleware('auth');
-//route/new en get pour fournir le fprmulaire de création de ticket:
-Route::get('/new', [ticketsController::class, 'form'])->name('new_ticket');
-//Route pour tous les tickets faisant appel à la fonction allTickets qui se servira du modèle pour afficher tous les tickets:
-//Route::get('/tickets', [ticketController::class, 'allTTickets'])->name('allTickets');
-Route::post('logout', [ticketsController::class, 'logout'])->name('logout');
+//Route home en post pour le traitement de la recherche:
+Route::post('/home', [ticketsController::class, 'search'])->name('search');

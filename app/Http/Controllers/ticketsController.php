@@ -95,7 +95,7 @@ class ticketsController extends Controller
 
     public function one_ticket($n)
     {
-        $one_ticket_model = new ticketsModel();
+        $one_ticket_model = new TicketModel();
         $ticket = $one_ticket_model->getone_ticket;
         return view('detail', ['ticket' => $ticket]);
     }
@@ -104,5 +104,22 @@ class ticketsController extends Controller
         Auth()->logout();
         return redirect('/login')->with(['msg_body' => 'You signed out!']);
 
+    }
+    public function search(Request $request) {
+
+    $ticketModel= new TicketModel();
+
+    $ticket = $ticketModel->search($request->input("search"));
+
+    $tickets = $ticketModel->getallTickets();
+
+    $nbResultSearch = (is_null($ticket))? 0 : 1;
+
+    return view('detail',
+    [
+        'tickets' => $tickets,
+        'nbresult' => $nbResultSearch,
+        's'=>$ticket
+    ]);
     }
 }

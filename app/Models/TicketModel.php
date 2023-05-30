@@ -38,6 +38,20 @@ class TicketModel extends Model
         }
         return true;
     }
+    function search(string $search)
+    {
+
+        try {
+            return DB::selectone('select * from ticket where id=? or sujet=?',[$search, $search]  );
+
+        } catch (Exception $e) {
+            return false;
+        }
+        return true;
+
+    }
+
 }
+
 
 
