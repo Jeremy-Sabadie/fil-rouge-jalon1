@@ -16,7 +16,7 @@
     </tr>
 
 </table>
-<button><a href="{{ route('all_tickets')}}">voir tous les tickets</a></button>
+
 
 <form action="{{ route('all_tickets')}}" method="GET">
     <button type="submit">tous les tickets</button>
