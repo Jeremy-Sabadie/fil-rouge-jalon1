@@ -13,7 +13,7 @@
         <form action="" method="post">
                         @csrf
                         <label for="search">search bar</label>
-                        <input type="text" id="search" name="search" placeholder="rechercher">
+                        <input type="text" id="search" name="search" placeholder="rechercher par numéro de ticket">
                         <button type="submit">rechercher</button>
                     </form>
         <nav>

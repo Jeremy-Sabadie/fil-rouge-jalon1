@@ -57,7 +57,7 @@ class ticketsController extends Controller
         $ticketModel = new ticketModel();
         $ticket = $ticketModel->getone_ticket($n);
         $tickets = $ticketModel->getallTickets();
-        return view('detail', ['ticket' => $ticket, 'tickets' => $tickets]);
+        return view('detail', ['ticket' => $ticket, 'tickets'=>$tickets]);
     }
 
     public function store(Request $request)
