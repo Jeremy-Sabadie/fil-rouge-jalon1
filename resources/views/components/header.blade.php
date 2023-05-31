@@ -16,14 +16,15 @@
                 </li>
                 <li><a href="#">Accueil</a></li>
                 <li>
-                    <form action="" method="post">
-                        <label for="search">search bar</label>
+                    <form action="{{route('search')}}" method="post">
+                        <label for="search">recherche</label>
                         <input type="text" id="search" name="search" placeholder="search">
                     </form>
                 </li>
                 <li><a href="#">À propos</a></li>
                 <li><a href="#"><img src="../images/profile.jpeg" alt="photo de profil"></a>
                     <p>user @yield('user_id')</p>
+
                 </li>
             </ul>
         </nav>

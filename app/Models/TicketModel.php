@@ -38,11 +38,11 @@ class TicketModel extends Model
         }
         return true;
     }
-    function search(string $search)
+    function Ticket_search( $search)
     {
 
         try {
-            return DB::selectone('select * from ticket where id=? or sujet=?',[$search, $search]  );
+            return DB::select('select * from ticket where id = :search or sujet like UPPER(:searchLike) or sujet like :searchLike2;',['search'=>$search, 'searchLike'=>'%'.$search.'%', 'searchLike2' => '%' . $search . '%']);
 
         } catch (Exception $e) {
             return false;

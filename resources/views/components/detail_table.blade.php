@@ -1,4 +1,4 @@
-<h3>Détaiil du ticket numéro :{{$ticket->id}}</h3>
+<h3>Détail du ticket numéro :{{$ticket->id}}</h3>
 <table>
     <thead>
         <tr>
@@ -20,3 +20,4 @@
 
         </tbody>
     </table>
+<button style="margin-top: 5%;"><a href="{{route('all')}}">tous les tickets</a></button>

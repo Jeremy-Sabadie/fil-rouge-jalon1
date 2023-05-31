@@ -109,17 +109,20 @@ class ticketsController extends Controller
 
     $ticketModel= new TicketModel();
 
-    $ticket = $ticketModel->search($request->input("search"));
+    $tickets = $ticketModel->Ticket_search($request->input("search"));
 
-    $tickets = $ticketModel->getallTickets();
+    $nbResultSearch = (is_null($tickets))? 0 : 1;
+if (count($tickets)) {
+    # code...
 
-    $nbResultSearch = (is_null($ticket))? 0 : 1;
-
-    return view('detail',
+    return view('result',
     [
         'tickets' => $tickets,
         'nbresult' => $nbResultSearch,
-        's'=>$ticket
+
     ]);
+        }
+else{return view('home',['tickets'=>$tickets]);
+}
     }
 }

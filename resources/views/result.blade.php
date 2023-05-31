@@ -1,4 +1,4 @@
 @extends('templates.home')
 @section('content')
-@include('result_table')
+@include('components.result_table')
 @endsection

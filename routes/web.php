@@ -49,6 +49,7 @@ Route::get('/new', [ticketsController::class, 'form'])->name('new_ticket');
 Route::post('logout', [ticketsController::class, 'logout'])->name('logout');
 // route pour afficher le détail d'un ticket:
 Route::get('/ticket/{n}', [ticketsController::class, 'detailTicket'])->name('ticket_detail');
+Route::post('/ticket/{n}', [ticketsController::class,  'search'])->name('result');
 //route vers la page de conection
 Route::get('/signin', [ticketsController::class, 'signin'])->name('signin');
 //route vers la page de conection

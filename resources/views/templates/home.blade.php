@@ -10,7 +10,7 @@
 
             <button type="submit">Se déconnecter</button>
         </form>
-        <form action="" method="post">
+        <form action="{{route('search')}}" method="post">
                         @csrf
                         <label for="search">search bar</label>
                         <input type="text" id="search" name="search" placeholder="rechercher par numéro de ticket">
@@ -39,6 +39,7 @@
                 <li><a href="#">À propos</a></li>
                 <li><a href="#"><img src="../images/profile.jpeg" alt="photo de profil"></a>
                     <p>{{ auth()->user()->name }}</p>
+                    <button><a href="">gérer mon profil</a></button>
                 </li>
             </ul>
         </nav>
