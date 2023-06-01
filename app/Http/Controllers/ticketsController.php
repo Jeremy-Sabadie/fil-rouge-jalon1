@@ -137,4 +137,17 @@ class ticketsController extends Controller
         $msg = $TicketModel()->searchmsg($n);
         return view('detail', $msg);
     }
+    //Controller pour la sommission d'un nouveau message:
+    function storemsg($id, Request $request) {
+    $newtiketModel=new TicketModel();
+    $title = $request->input('title_msg');
+    $n_msg=$newtiketModel->storemsg(
+        $id,
+        $title,
+        $request->input('new_msg'),
+        Carbon::now()
+    );
+
+
+    }
 }

@@ -59,4 +59,8 @@ Route::get('/tickets', [ticketsController::class, 'allTickets'])->name('all_tick
 
 //Route home en post pour le traitement de la recherche:
 Route::post('/home', [ticketsController::class, 'search'])->name('search');
+//Route pour l'envoie d'u nouveau message:
+Route::post('ticket/{id}',[ticketsController::class, 'storemsg'])->name('sumition_msg');
+
+
 

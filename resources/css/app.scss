@@ -320,21 +320,22 @@ body#home {
     /*start oh the msg_display:*/
         #conversation {
             width: 200px;
-            height: 400px;
+            height: fit-content;
             background-color: beige;
             border: #9a9a9a 1.5px solid;
             border-radius: 10px;
-            color: red;
+            color: black;
             padding: 0;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-around;
+            align-items: center;
 
 
         }
 
         #conversation ul {
-            width: f;
+            width: 100%;
             height: 100%;
             list-style: none;
             display: flex;
@@ -345,11 +346,39 @@ body#home {
         #conversation ul li {
             width: 100%;
             height: fit-content;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 10px;
+            flex-wrap: wrap;
             border: 2px black;
             border: #9a9a9a 1.5px solid;
-            margin: 10px;
+            border-radius: 5px;
+            line-height: 3px;
         }
-        /*End of the msg_display style/*/
+        #conversation ul li p{
+            margin: 8px;
+
+        }
+        /*style of inputs:*/
+           #conversation input{
+            width: 80%;
+            display: block;
+            margin: 5px;
+            height: fit-content;
+            display: flex;
+            flex-wrap: wrap;
+           }
+                   #conversation #title_msg{
+                        width: 80%;
+                        height: 40px;
+                   }
+                #conversation button{
+                    margin-bottom: 10px;
+                    border-radius: 5px;
+
+                }
+        /*End of the conversation_display style/*/
 
     @media only screen and (max-width: 640px) {
     header{
@@ -456,7 +485,7 @@ body#home {
             }
 
             form label {
-                display: none;
+
             }
 
             nav:first-child {

@@ -53,6 +53,12 @@ class TicketModel extends Model
 function searchmsg($n) {
 return DB::select('select * from messages join ticket_message on messages.id_message=ticket_message.id_message where id_ticket =?;', [$n]);
 }
+function storemsg($ticketId,$title,$content,$cdat) {
+return DB::insert('insert into message (id_message, content, created_dat) values (?, ?,?)', [1, $content,$cdat]);
+
+
+
+}
 
 }
 

@@ -1,14 +1,26 @@
 @include('components.head')
+<p>détail de la conversation</p>
 <div id="conversation">
-        <ul>
+    <ul>
 
-                @forelse ($msg as $i)
-<li>
-    <p>{{$i->created_dat}}</p><i><p>{{$i->auteur}}</p></i>
-                    <p>{{$msg->content}}</p>
-</li>
-                 @empty
+        @forelse ($msg as $ms)
+            <li>
+                <p><u>le:</u>{{ $ms->created_dat }}</p><b><u>
+                        <p>auteur:{{ $ms->id_auteur }}</p>
+                    </u></b>
+                <i>
+                    <p>a écrit:{{ $ms->content }}</p>
+                </i>
+            </li>
+        @empty
+        @endforelse
+    </ul>
+    <form action="{{route('ticket_detail')}}"method="post">
 
-                @endforelse
-        </ul>
-    </div>
+        @csrf
+
+        <label for="new_msg"> message</label>
+        <input type="text" name="new_msg" placeholder="écrivez votre message">
+        <button type submmit>envoyer</button>
+    </form>
+</div>
