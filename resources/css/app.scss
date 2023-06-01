@@ -288,7 +288,8 @@ body#home {
         text-transform: uppercase;
         font-weight: bolder;
         background-color: wheat;
-        color: #0c0a0a;
+
+        color: #0c0101;
         margin-top: 7px;
 
     }
@@ -316,6 +317,39 @@ body#home {
         display: flex;
         justify-content: space-between;
     }
+    /*start oh the msg_display:*/
+        #conversation {
+            width: 200px;
+            height: 400px;
+            background-color: beige;
+            border: #9a9a9a 1.5px solid;
+            border-radius: 10px;
+            color: red;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+
+        }
+
+        #conversation ul {
+            width: f;
+            height: 100%;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        #conversation ul li {
+            width: 100%;
+            height: fit-content;
+            border: 2px black;
+            border: #9a9a9a 1.5px solid;
+            margin: 10px;
+        }
+        /*End of the msg_display style/*/
 
     @media only screen and (max-width: 640px) {
     header{

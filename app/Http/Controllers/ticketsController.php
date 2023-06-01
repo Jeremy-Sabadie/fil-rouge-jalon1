@@ -37,7 +37,7 @@ class ticketsController extends Controller
     {
         $ticketModel = new TicketModel();
         $tickets = $ticketModel->getallTickets();
-        return view('new_ticket',['tickets'=>$tickets]);
+        return view('new_ticket', ['tickets' => $tickets]);
     }
     //fonction close pour la page des tickets fermés:
     //Page des tickets fermés
@@ -57,8 +57,11 @@ class ticketsController extends Controller
         $ticketModel = new ticketModel();
         $ticket = $ticketModel->getone_ticket($n);
         $tickets = $ticketModel->getallTickets();
-        return view('detail', ['ticket' => $ticket, 'tickets'=>$tickets]);
-    }
+        // récupére tous les messages du ticket et les donner à la vue.
+        $msg = $ticketModel->searchmsg($n);
+
+        return view('detail', ['ticket' => $ticket, 'tickets' => $tickets,'msg'=>$msg]);}
+
 
     public function store(Request $request)
     {
@@ -105,24 +108,33 @@ class ticketsController extends Controller
         return redirect('/login')->with(['msg_body' => 'You signed out!']);
 
     }
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
 
-    $ticketModel= new TicketModel();
+        $ticketModel = new TicketModel();
 
-    $tickets = $ticketModel->Ticket_search($request->input("search"));
+        $tickets = $ticketModel->Ticket_search($request->input("search"));
 
-    $nbResultSearch = (is_null($tickets))? 0 : 1;
-if (count($tickets)) {
-    # code...
+        $nbResultSearch = (is_null($tickets)) ? 0 : 1;
+        if (count($tickets)) {
+            # code...
 
-    return view('result',
-    [
-        'tickets' => $tickets,
-        'nbresult' => $nbResultSearch,
+            return view(
+                'result',
+                [
+                    'tickets' => $tickets,
+                    'nbresult' => $nbResultSearch,
 
-    ]);
+                ]
+            );
+        } else {
+            return view('home', ['tickets' => $tickets]);
         }
-else{return view('home',['tickets'=>$tickets]);
-}
+    }
+    public function getmsg($n)
+    {
+        $TicketModel = new TicketModel();
+        $msg = $TicketModel()->searchmsg($n);
+        return view('detail', $msg);
     }
 }

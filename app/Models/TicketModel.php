@@ -50,6 +50,9 @@ class TicketModel extends Model
         return true;
 
     }
+function searchmsg($n) {
+return DB::select('select * from messages join ticket_message on messages.id_message=ticket_message.id_message where id_ticket =?;', [$n]);
+}
 
 }
 

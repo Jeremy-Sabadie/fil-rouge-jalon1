@@ -20,4 +20,5 @@
 
         </tbody>
     </table>
-<button style="margin-top: 5%;"><a href="{{route('all')}}">tous les tickets</a></button>
+<button style="margin: 5%;"><a href="{{route('all_tickets')}}">tous les tickets</a></button>
+<button style="margin-bottom: 5%;" id="msgon">voir la conversation</button>
