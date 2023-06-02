@@ -7,28 +7,17 @@ CREATE TABLE if not exists ticket (
     id_type_panne INT,
     id_auteur INT,
     created_dat DATETIME,
-          updated_dat DATETIME);
-
-
-
-
-
-
-
-
-
-
-
-
+    updated_dat DATETIME
+);
 
 CREATE TABLE if not exists status (
-    id INT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     label VARCHAR(20)
     );
 
 
 CREATE TABLE if not exists type_panne (
-    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     label VARCHAR(20)
    );
 

@@ -49,7 +49,6 @@ Route::get('/new', [ticketsController::class, 'form'])->name('new_ticket')->midd
 Route::post('logout', [ticketsController::class, 'logout'])->name('logout')->middleware('auth');
 // route pour afficher le détail d'un ticket:
 Route::get('/ticket/{n}', [ticketsController::class, 'detailTicket'])->name('ticket_detail');
-Route::post('/ticket/{n}', [ticketsController::class,  'search'])->name('result');
 //route vers la page de conection
 
 //route vers la page d'acceuil utilisateur.
@@ -59,7 +58,7 @@ Route::get('/tickets', [ticketsController::class, 'allTickets'])->name('all_tick
 
 //Route home en post pour le traitement de la recherche:
 Route::post('/home', [ticketsController::class, 'search'])->name('search');
-//Route pour l'envoie d'u nouveau message:
+//Route pour l'envoie d'un nouveau message:
 Route::post('ticket/{id}',[ticketsController::class, 'storemsg'])->name('sumition_msg');
 
 

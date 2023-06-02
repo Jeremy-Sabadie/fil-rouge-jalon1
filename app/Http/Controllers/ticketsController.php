@@ -100,6 +100,7 @@ class ticketsController extends Controller
     {
         $one_ticket_model = new TicketModel();
         $ticket = $one_ticket_model->getone_ticket;
+
         return view('detail', ['ticket' => $ticket]);
     }
     public function logout(Request $request)
@@ -138,16 +139,13 @@ class ticketsController extends Controller
         return view('detail', $msg);
     }
     //Controller pour la sommission d'un nouveau message:
-    function storemsg($id, Request $request) {
+    function storemsg( Request $request) {
     $newtiketModel=new TicketModel();
-    $title = $request->input('title_msg');
-    $n_msg=$newtiketModel->storemsg(
-        $id,
-        $title,
-        $request->input('new_msg'),
-        Carbon::now()
-    );
+    $ticketId= $request->route("id");
+    $contentMessage=$request->input('new_msg');
+    $auteurId=auth()->user()->id;
+    $n_msg=$newtiketModel->storemsg($ticketId,$contentMessage,$auteurId);
 
-
+    return redirect()->route('ticket_detail', ['n' =>$ticketId]);
     }
 }
