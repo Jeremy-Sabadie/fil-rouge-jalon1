@@ -1,9 +1,14 @@
 ALTER TABLE users
 DROP CONSTRAINT IF EXISTS pk_users;
---Ajout des colonnes prenm et tel à la table user créé par fortify:
+--Ajout des colonnes prenom et tel à la table user créé par fortify:
  ALTER TABLE users
  ADD COLUMN prenom varchar(10),
 - ADD COLUMN tel varchar(10);
+ALTER TABLE users
+DROP CONSTRAINT IF EXISTS pk_users;
+--Ajout de la colonne role:
+ ALTER TABLE users
+ ADD COLUMN role varchar(10);
 
 -- Ajout de la clef étrangère id_ateur dans la table ticket correspondant à lacolonne id de la table uszers:
  ALTER TABLE ticket

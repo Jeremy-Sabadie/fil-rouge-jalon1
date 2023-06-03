@@ -80,7 +80,12 @@ return DB::select('select * from messages join ticket_message on messages.id_mes
         return -1;
     }
  }
-
+ //Cette fonction devra ^^etre déplacé dans le modèle de users quand il sera fait.
+    function CurrentUser($n)
+    {
+        return DB::selectOne('select  role
+from users   where  id=?;', [$n]);
+    }
 }
 
 

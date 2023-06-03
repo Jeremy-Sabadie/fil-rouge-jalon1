@@ -321,7 +321,17 @@ body#home {
         justify-content: space-between;
     }
     /*start oh the msg_display:*/
-        #conversation {
+    #conversation{
+        display: block;
+        opacity: 1;
+        transition: opacity 5s ease-in-out;
+
+        width: 200px;
+            height: fit-content;
+    }
+        #conversation.show {
+            display: block;
+                opacity: 1;
             width: 200px;
             height: fit-content;
             background-color: beige;
@@ -350,6 +360,9 @@ body#home {
             width: 100%;
             height: fit-content;
             display: flex;
+            flex-wrap: wrap;
+
+
             flex-direction: column;
             margin: 0;
             padding: 10px;
@@ -361,6 +374,7 @@ body#home {
         }
         #conversation ul li p{
             margin: 8px;
+            line-height: 6px;
 
         }
         /*style of inputs:*/
@@ -368,7 +382,7 @@ body#home {
             width: 80%;
             display: block;
             margin: 5px;
-            height: fit-content;
+            height: 45px;
             display: flex;
             flex-wrap: wrap;
            }

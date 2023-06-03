@@ -41,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    //Retourne le role de l'utilisateur passé en paramètre:
+    function CurrentUser($n)
+    {
+        return DB::selectOne('select  role
+from users   where  id=?;', [$n]);
+    }
 }

@@ -1,5 +1,5 @@
 @include('components.head')
-<p>détail de la conversation</p>
+<h3><u>détail de la conversation</u></h3>
 <div id="conversation">
     <ul>
 

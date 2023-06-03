@@ -61,5 +61,5 @@ Route::post('/home', [ticketsController::class, 'search'])->name('search');
 //Route pour l'envoie d'un nouveau message:
 Route::post('ticket/{id}',[ticketsController::class, 'storemsg'])->name('sumition_msg');
 
-
-
+//Route pour aller sur la page admin:
+Route::get('/admin', [ticketsController::class, 'userRight'])->name('admin')->middleware('auth');

@@ -148,4 +148,15 @@ class ticketsController extends Controller
 
     return redirect()->route('ticket_detail', ['n' =>$ticketId]);
     }
+    //La fonction userRight récupère le role de l'utilisateur actuellement autentifiépar l'intermédiaire du modèle si ce role est égal à 'admin' sinon elle retourne la vue admin et l'objet $user qui permettra de faire une condition d'affichage dans la vue en fonction durole de ll'utilisateur.
+    function userRight( Request $request) {
+        $user=auth()->user();
+    $NtiketController= new TicketModel();
+    $right= $NtiketController->CurrentUser($user);
+        $ticketModel = new TicketModel();
+        $tickets = $ticketModel->getallTickets();
+        dd($user->role);
+        return view('admin',['user'=>$user,'tickets'=>$tickets]);
+
+}
 }
