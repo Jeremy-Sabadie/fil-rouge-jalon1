@@ -380,6 +380,40 @@ body#home {
                 }
         /*End of the conversation_display style/*/
 
+        /*status update style:*/
+                fieldset {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 500px;
+                    height: fit-content;
+                    padding: 5%;
+                }
+
+                fieldset label {
+                    font-size: larger;
+                    font-weight: bolder;
+
+                }
+
+                fieldset input {}
+
+                fieldset button {
+                    width: fit-content;
+                    height: 40px;
+                    margin: 5%;
+                    background-color: cornflowerblue;
+                    color: white;
+                    border-radius: 5px;
+                }
+
+                fieldset * {
+
+                    display: block;
+
+                }
+
     @media only screen and (max-width: 640px) {
     header{
             width: 100%;
