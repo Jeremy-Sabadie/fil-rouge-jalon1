@@ -59,8 +59,12 @@ class ticketsController extends Controller
         $tickets = $ticketModel->getallTickets();
         // récupére tous les messages du ticket et les donner à la vue.
         $msg = $ticketModel->searchmsg($n);
+        //Récupération des droits de l'utilisateur pour l'affichage de la mise à jour du status du ticket:
+        $user = auth()->user();
+        $NtiketController = new TicketModel();
+        $right = $NtiketController->CurrentUser($user);
 
-        return view('detail', ['ticket' => $ticket, 'tickets' => $tickets,'msg'=>$msg]);}
+        return view('detail', ['ticket' => $ticket, 'tickets' => $tickets,'msg'=>$msg,'user'=>$user]);}
 
 
     public function store(Request $request)
@@ -153,10 +157,11 @@ class ticketsController extends Controller
         $user=auth()->user();
     $NtiketController= new TicketModel();
     $right= $NtiketController->CurrentUser($user);
+    //pour l'aside:
         $ticketModel = new TicketModel();
         $tickets = $ticketModel->getallTickets();
-        dd($user->role);
-        return view('admin',['user'=>$user,'tickets'=>$tickets]);
 
+
+        return view('admin',['user'=>$user,'tickets'=>$tickets]);
 }
 }

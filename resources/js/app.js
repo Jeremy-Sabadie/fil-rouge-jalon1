@@ -30,4 +30,4 @@ button.addEventListener("click", function () {
         div.style.display = "block";
     }
 });
-});
+

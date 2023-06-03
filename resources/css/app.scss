@@ -252,7 +252,7 @@ body#home {
     main {
         grid-area: main;
         color: white;
-        padding: 10%;
+
         display: flex;
         flex-direction: column;
 
@@ -288,7 +288,6 @@ body#home {
         margin: 0;
         width: 50%;
         text-align: center;
-        text-transform: uppercase;
         font-weight: bolder;
         background-color: wheat;
 
@@ -320,32 +319,16 @@ body#home {
         display: flex;
         justify-content: space-between;
     }
-    /*start oh the msg_display:*/
+    /*start of the msg_display:*/
     #conversation{
-        display: block;
-        opacity: 1;
-        transition: opacity 5s ease-in-out;
-
         width: 200px;
-            height: fit-content;
+        height: fit-content;
+        display: block;
+    background-color: beige;
+    border-radius: 10px;
+    color: black;
     }
-        #conversation.show {
-            display: block;
-                opacity: 1;
-            width: 200px;
-            height: fit-content;
-            background-color: beige;
-            border: #9a9a9a 1.5px solid;
-            border-radius: 10px;
-            color: black;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
 
-
-        }
 
         #conversation ul {
             width: 100%;
@@ -365,7 +348,8 @@ body#home {
 
             flex-direction: column;
             margin: 0;
-            padding: 10px;
+            line-height: 3px;
+            padding: 5px;
             flex-wrap: wrap;
             border: 2px black;
             border: #9a9a9a 1.5px solid;
@@ -373,7 +357,7 @@ body#home {
             line-height: 3px;
         }
         #conversation ul li p{
-            margin: 8px;
+
             line-height: 6px;
 
         }
@@ -386,10 +370,7 @@ body#home {
             display: flex;
             flex-wrap: wrap;
            }
-                   #conversation #title_msg{
-                        width: 80%;
-                        height: 40px;
-                   }
+
                 #conversation button{
                     margin-bottom: 10px;
                     border-radius: 5px;
@@ -414,12 +395,12 @@ body#home {
 
                 }
 
-                fieldset input {}
+
 
                 fieldset button {
                     width: fit-content;
                     height: 40px;
-                    margin: 5%;
+                    margin-left: 20px;
                     background-color: cornflowerblue;
                     color: white;
                     border-radius: 5px;
@@ -589,7 +570,7 @@ main form {
     height: 100px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
