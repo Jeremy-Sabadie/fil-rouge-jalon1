@@ -106,7 +106,10 @@ body#home {
     nav ul li:hover {
         background-color: #9a9a9a;
     }
-
+    a{
+        text-decoration: none;
+        color: black;
+    }
     nav ul li:hover>ul {
         display: block;
     }

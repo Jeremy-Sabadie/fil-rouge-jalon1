@@ -5,11 +5,11 @@
 
         @forelse ($msg as $ms)
             <li>
-                <p><u>le:</u>{{ $ms->created_dat }}</p><b><u>
+                <p><b><u>le: </u></b>{{ $ms->created_dat }}</p><b><u>
                         <p>auteur:{{ $ms->id_auteur }}</p>
                     </u></b>
                 <i>
-                    <p>a écrit:{{ $ms->content }}</p>
+                    <p>{{ $ms->content }}</p>
                 </i>
             </li>
         @empty
@@ -19,7 +19,7 @@
 
         @csrf
 
-        <label for="new_msg"> message</label>
+        <label for="new_msg"> nouveau message</label>
         <input type="text" name="new_msg" placeholder="écrivez votre message">
         <button type submmit>envoyer</button>
     </form>
