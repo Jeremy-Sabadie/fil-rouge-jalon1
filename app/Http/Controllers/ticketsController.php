@@ -94,8 +94,11 @@ class ticketsController extends Controller
     //Fonction qui créer une nouvelle instance du modèle des tickets et qui retourne le résultat de la fonction chargée de récupérer tous les éléments de la table des tickets.
     public function allTickets()
     {
+
+
         $ticketModel = new TicketModel();
         $tickets = $ticketModel->getallTickets();
+
         return view('all', ['tickets' => $tickets]);
     }
 
@@ -164,4 +167,12 @@ class ticketsController extends Controller
 
         return view('admin',['user'=>$user,'tickets'=>$tickets]);
 }
+    public function allUserTickets()
+    {
+        $user = auth()->user(); // Récupère l'utilisateur connecté
+        $ticketModel = new TicketModel();
+        $tickets = $ticketModel->getUserTickets($user->id);
+
+        return view('all', ['tickets' => $tickets]);
+    }
 }

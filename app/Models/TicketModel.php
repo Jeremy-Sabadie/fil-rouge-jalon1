@@ -12,7 +12,7 @@ class TicketModel extends Model
     use HasFactory;
     public function getallTickets()
     {
-        return DB::select("select * from ticket");
+        return DB::select('select * from ticket;');
     }
     function getone($n)
     {
@@ -86,7 +86,10 @@ return DB::select('select * from messages join ticket_message on messages.id_mes
         return DB::selectOne('select  role
 from users   where  id=?;', [$n]);
     }
+    public function getUserTickets($userId)
+{
+    return DB::select('SELECT * FROM ticket join users on id_auteur=users.id WHERE id_auteur = ?;', [$userId]);
 }
-
+}
 
 

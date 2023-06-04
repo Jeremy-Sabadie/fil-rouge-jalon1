@@ -26,21 +26,8 @@ Route::get('/test', function () {
 
 
 
-//========================================================================================
-//--------------------------------------AVION---------------------------------------------
-//========================================================================================
-// route pour afficher tous les avions
-Route::get('/avion', [AvionController::class, 'AfficherAvions'])->name('avion_all');
-//Route en GET qui dirige via le contôleur vers le formulaire de création:
-Route::get('/create', [AvionController::class, 'toCreate'])->name('avion_form');
-Route::get('/avion/{n}', [AvionController::class, 'detailTicket'])->name('avion_detail');
 
-//route en post qui apelle le contrôleur avec la fonction create qui envoie le formulaire de céation:
-Route::post('/create', [AvionController::class, 'store'])->name('avion_create');
-Route::get('/create', [AvionController::class, 'new'])->name('avion_form');
-//================================================================================================
-//===============================================TICKET
-//================================================================================================
+
 //route /new en post qui apelle la fonction create du contrôleur des tickets avec la fonction create qui qui elle apellera la fonction du modèle qui stockera les valeurs des inputs dans la table TICKET:
 Route::post('/new', [ticketsController::class, 'store'])->name('avion_create')->middleware('auth');
 //route/new en get pour fournir le fprmulaire de création de ticket:
@@ -54,7 +41,7 @@ Route::get('/ticket/{n}', [ticketsController::class, 'detailTicket'])->name('tic
 //route vers la page d'acceuil utilisateur.
 Route::get('/home', [ticketsController::class, 'home'])->name('home')->middleware('auth');
 //route vers la page de tous les tickets.
-Route::get('/tickets', [ticketsController::class, 'allTickets'])->name('all_tickets');
+Route::get('/tickets', [ticketsController::class, 'allUserTickets'])->name('all_tickets');
 
 //Route home en post pour le traitement de la recherche:
 Route::post('/home', [ticketsController::class, 'search'])->name('search');
