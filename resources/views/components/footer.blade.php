@@ -7,6 +7,8 @@
             <li><a href="#">Item 4</a></li>
             <li><a href="#">Item 5</a></li>
         </ul>
+                <a href="#top" style="color: white;">revenir en haut de la page</a>
+
         <ul>
             <h4>titre ul_2</h4>
             <li><a href="#">Item 1.2</a></li>

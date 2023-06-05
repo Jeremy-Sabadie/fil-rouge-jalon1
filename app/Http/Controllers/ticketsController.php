@@ -68,18 +68,14 @@ class ticketsController extends Controller
 
 
     public function store(Request $request)
-    {
-
-
-        // Récupération des différentes valeurs des inputs du formulaire dans des variables.Ces variables seront données au modèle pour qu'il les range dans la base de dnnées.
-        $idstatus = $request->input('idstatus');
+    {// Récupération des différentes valeurs des inputs du formulaire dans des variables.Ces variables seront données au modèle pour qu'il les range dans la base de dnnées.
         $sujet = $request->input('sujet');
-        $typepanne = $request->input('typepanne');
+        $id_auteur= auth()->user()->id;
         $cdat = Carbon::now(); // Date actuelle
 
         //Nouvelle instance de la classe ticketModel*:
         $ticketModel = new TicketModel();
-        $res = $ticketModel->store($sujet, $idstatus, $typepanne, $cdat);
+        $res = $ticketModel->store($sujet,$id_auteur, $cdat);
         $ticketModel = new TicketModel();
         $tickets = $ticketModel->getallTickets();
         //Si la la création est retournée false on renvoie ver le formulaire de céation avec un message d'erreur
@@ -174,5 +170,11 @@ class ticketsController extends Controller
         $tickets = $ticketModel->getUserTickets($user->id);
 
         return view('all', ['tickets' => $tickets]);
+    }
+    public function closedTickets() {
+        $user = auth()->user();
+    $newticketModel= new TicketModel();
+    $tickets=$newticketModel->closed($user->id);
+    return view('closed',['tickets'=>$tickets]);
     }
 }

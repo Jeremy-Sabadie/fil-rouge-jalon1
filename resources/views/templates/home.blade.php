@@ -4,7 +4,7 @@
 @include('components.head')
 
 <body id="home">
-    <header>
+    <header id="top">
         <form method="POST" action="{{ route('logout') }}">
             @csrf
 
@@ -23,12 +23,12 @@
                 </li>
                 <!-- main item of dropdown menu  -->
                 <li class="dropdown">
-                    <a href="{{ route('all_tickets') }}">mes tickets</a>
+                    <a href="{{ route('all_tickets') }}">tickets</a>
                     <ul class="dropdown-menu">
                         <!-- dropdown list-items  -->
                         <li><a href="{{ route('all_tickets') }}">Tous les tickets</a></li>
                         <li><a href="">tickets en attentes</a></li>
-                        <li><a href="">tickets fermés</a></li>
+                        <li><a href="{{ route('closed') }}">tickets terminés</a></li>
                         <li><a href="{{ route('new_ticket') }}">nouveau ticket</a></li>
                     </ul>
                 </li>
@@ -46,7 +46,10 @@
     </header>
     @include('components.aside')
     <main>
+        <p>bonjour {{ auth()->user()->name }}</p>
+        <h1>Vous avez besoin d'une nouvelle assistance?</h1>
         @yield('content')
+
     </main>
     @include('components.footer')
 </body>

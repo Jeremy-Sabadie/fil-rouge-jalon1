@@ -1,5 +1,5 @@
 <aside>
-        <h2>Mes tickets</h2>
+        <h2>Informations</h2>
         <ul>
            @forelse ($tickets as $ticket)
 
@@ -11,7 +11,7 @@
                     <button type="button"><a href="{{ route('ticket_detail', ['n' => $ticket->id]) }}">Detail</a></button>
                 </li>
                     @empty
-                <p>...</p>
+                <p>aucune information</p>
             @endforelse
         </ul>
     </aside>

@@ -22,15 +22,15 @@ class TicketModel extends Model
     {
         return DB::selectOne('select * from ticket where ID =?;', [$n]);
     }
-    function store($sujet, $idstatus, $typepanne, $cdat)
+    function store($sujet, $id_auteur, $cdat)
     {
         //to do gestion des exeptions:
 
         try {
             $id = DB::table('ticket')->insertGetId([
                 'sujet' => $sujet,
-                'id_status' => $idstatus,
-                'ID_type_panne' => $typepanne,
+                'id_auteur'=>$id_auteur,
+
                 'created_dat' => $cdat,
             ]);
             return $id;
@@ -89,6 +89,10 @@ from users   where  id=?;', [$n]);
     public function getUserTickets($userId)
 {
     return DB::select('SELECT * FROM ticket join users on id_auteur=users.id WHERE id_auteur = ?;', [$userId]);
+}
+public function closed($userId) {
+        return DB::select("SELECT * FROM ticket JOIN users  ON ticket.id_auteur =users.id
+WHERE id_status= ?;",[1]);
 }
 }
 

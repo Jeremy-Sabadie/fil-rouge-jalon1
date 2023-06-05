@@ -1,8 +1,6 @@
 @extends('templates.home')
-
 @section('content')
-
-    <h3>Tous vos tickets</h3>
+ <h3>tickets fermés</h3>
     <table>
         <thead>
             <tr>
@@ -14,6 +12,9 @@
             </tr>
         </thead>
         <tbody>
+        
+
+
             @forelse ($tickets as $ticket)
                 <tr>
                     <td>{{ $ticket->id }}</td>
@@ -23,8 +24,8 @@
                     <td><button type="button"><a href="{{ route('ticket_detail', ['n' => $ticket->id]) }}">Detail</a></button></td>
                 </tr>
             @empty
-                <p>Aucun ticket à ce jour</p>
+                <p>aucun ticket fermé à ce jour</p>
             @endforelse
         </tbody>
     </table>
-    @endsection
+@endsection
