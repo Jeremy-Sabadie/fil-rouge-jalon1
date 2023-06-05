@@ -1,9 +1,9 @@
 @extends('templates.home')
 @section('content')
+<h3>tickets en cours de traitement</h3>
 @if (count($tickets) > 0)
 
 
- <h3>tickets fermés</h3>
     <table>
         <thead>
             <tr>
@@ -27,11 +27,12 @@
                     <td><button type="button"><a href="{{ route('ticket_detail', ['n' => $ticket->id]) }}">Detail</a></button></td>
                 </tr>
             @empty
+                <p>aucun tickets en cours</p>
             @endforelse
         </tbody>
     </table>
     @else
-     @forelse ($tickets as $ticket)
+    @forelse ($tickets as $ticket)
                 <tr>
                     <td>{{ $ticket->id }}</td>
                     <td>{{ $ticket->sujet }}</td>
@@ -40,7 +41,7 @@
                     <td><button type="button"><a href="{{ route('ticket_detail', ['n' => $ticket->id]) }}">Detail</a></button></td>
                 </tr>
             @empty
-                <p>aucun ticket fermé à ce jour</p>
+                <p>aucun tickets en cours</p>
             @endforelse
         </tbody>
     </table>

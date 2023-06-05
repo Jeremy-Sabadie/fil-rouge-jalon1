@@ -8,6 +8,7 @@
             <li><a href="#">Item 5</a></li>
         </ul>
                 <a href="#top" style="color: white;">revenir en haut de la page</a>
+                {{-- <p>made with <img src="/images/coeur2.png" alt="coeur rouge" style="width: 12px;height:12px;object-fit:contain;margin-top:150px;"></p> --}}
 
         <ul>
             <h4>titre ul_2</h4>

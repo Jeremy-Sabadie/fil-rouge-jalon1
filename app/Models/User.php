@@ -47,4 +47,5 @@ class User extends Authenticatable
         return DB::selectOne('select  role
 from users   where  id=?;', [$n]);
     }
+    
 }

@@ -94,6 +94,10 @@ public function closed($userId) {
         return DB::select("SELECT * FROM ticket JOIN users  ON ticket.id_auteur =users.id
 WHERE id_status= ?;",[1]);
 }
+public function open($userId) {
+        return DB::select("SELECT * FROM ticket JOIN users  ON ticket.id_auteur =users.id
+WHERE id_status= ?;",[0]);
+}
 }
 
 

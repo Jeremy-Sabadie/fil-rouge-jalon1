@@ -15,7 +15,7 @@
         @empty
         @endforelse
     </ul>
-    <form action="{{route('ticket_detail',['n'=>$ticket->id])}}"method="post">
+    <form action="{{route('ticket_detail',['n'=>$ticket->id])}}"method="post" id="msg_ticket">
 
         @csrf
 

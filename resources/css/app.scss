@@ -98,9 +98,22 @@ body#home {
         "header header"
         "aside main"
         "footer footer";
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
     padding: 0;
+main>span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+main>span button{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    margin-left: 1%;
+    background-color: beige;
+
+}
 h1{
     font-size: smaller;
 }
@@ -266,7 +279,7 @@ h1{
     main img {
         width: 25%;
         height: 100%;
-        margin-top: 5%;
+
 
         object-fit: cover;
 
@@ -365,6 +378,10 @@ h1{
 
         }
         /*style of inputs:*/
+        #conversation>form{
+            margin: 0;
+            padding: 0;
+        }
            #conversation input{
             width: 80%;
             display: block;

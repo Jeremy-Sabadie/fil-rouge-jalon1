@@ -27,8 +27,8 @@
                     <ul class="dropdown-menu">
                         <!-- dropdown list-items  -->
                         <li><a href="{{ route('all_tickets') }}">Tous les tickets</a></li>
-                        <li><a href="">tickets en attentes</a></li>
-                        <li><a href="{{ route('closed') }}">tickets terminés</a></li>
+                        <li><a href="{{ route('open') }}">tickets en cours</a></li>
+                        <li><a href="{{ route('close') }}">tickets terminés</a></li>
                         <li><a href="{{ route('new_ticket') }}">nouveau ticket</a></li>
                     </ul>
                 </li>
@@ -47,7 +47,9 @@
     @include('components.aside')
     <main>
         <p>bonjour {{ auth()->user()->name }}</p>
-        <h1>Vous avez besoin d'une nouvelle assistance?</h1>
+        <span >
+            <h1>Vous avez besoin d'une nouvelle assistance?</h1><button type="button"><a href="{{route('new_ticket')}}">nouvelle demande</a></button>
+        </span>
         @yield('content')
 
     </main>

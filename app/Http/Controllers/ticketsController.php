@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon; //ligne qui permettra de récupérer la date actuelle pous la colone de la date de création du ticket.
 use Illuminate\Http\Request;
 use App\Models\TicketModel;
+use App\Models\User;
 
 class ticketsController extends Controller
 {
@@ -151,15 +152,14 @@ class ticketsController extends Controller
 
     return redirect()->route('ticket_detail', ['n' =>$ticketId]);
     }
-    //La fonction userRight récupère le role de l'utilisateur actuellement autentifiépar l'intermédiaire du modèle si ce role est égal à 'admin' sinon elle retourne la vue admin et l'objet $user qui permettra de faire une condition d'affichage dans la vue en fonction durole de ll'utilisateur.
+    //La fonction userRight récupère le role de l'utilisateur actuellement autentifié par l'intermédiaire du modèle User, si ce role est égal à 'admin' sinon elle retourne la vue admin et l'objet $user qui permettra de faire une condition d'affichage dans la vue en fonction durole de ll'utilisateur.
     function userRight( Request $request) {
         $user=auth()->user();
-    $NtiketController= new TicketModel();
+    $NtiketController= new User();//Fait appel au modèle des users pour vérifier en BDD le role de l'utilisateur actuellement connecté.
     $right= $NtiketController->CurrentUser($user);
     //pour l'aside:
         $ticketModel = new TicketModel();
         $tickets = $ticketModel->getallTickets();
-
 
         return view('admin',['user'=>$user,'tickets'=>$tickets]);
 }
@@ -176,5 +176,11 @@ class ticketsController extends Controller
     $newticketModel= new TicketModel();
     $tickets=$newticketModel->closed($user->id);
     return view('closed',['tickets'=>$tickets]);
+    }
+    public function openTickets() {
+        $user = auth()->user();
+    $newticketModel= new TicketModel();
+    $tickets=$newticketModel->open($user->id);
+    return view('open',['tickets'=>$tickets]);
     }
 }
