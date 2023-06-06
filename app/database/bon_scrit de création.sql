@@ -10,10 +10,9 @@ CREATE TABLE if not exists ticket (
     updated_dat DATETIME
 );
 
-CREATE TABLE if not exists status (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    label VARCHAR(20)
-    );
+CREATE TABLE IF NOT EXISTS status(
+id INT PRIMARY KEY,
+label varchar(15));
 
 
 CREATE TABLE if not exists type_panne (

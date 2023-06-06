@@ -54,4 +54,5 @@ Route::get('/admin', [ticketsController::class, 'userRight'])->name('admin')->mi
 Route::get('closed', [ticketsController::class, 'closedTickets'])->name('close')->middleware('auth');
 //Routes pour voir les tickets encours:
 Route::get('open', [ticketsController::class, 'openTickets'])->name('open')->middleware('auth');
-
+//Route pour la soummission du formulaire de mise à jour du status du ticket:
+Route::post('/ticket/{idTicket}/status', [ticketsController::class, 'maj_status'])->name('maj_status');

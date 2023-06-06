@@ -25,6 +25,11 @@ add
 --Ajout de la clef primaire id_ticket à la table ticket_message, elle correspond a la colonne id de la table ticket:
 ALTER TABLE ticket_message
 ADD CONSTRAINT fk_ticket_message FOREIGN KEY (id_ticket) REFERENCES tickets(id);
+--Ajout de la clef étrangère id_status dan la table ticket qui
+--pointe l'id de la table status:
+ALTER TABLE ticket
+ADD CONSTRAINT fk_ticket_status
+FOREIGN KEY (id_status) REFERENCES status(id);
 --Modification de la colonne id de la table ticket_message en clef primaire de la table:
 --ALTER TABLE ticket_message
 --ADD CONSTRAINT pk_ticket_message PRIMARY KEY (id);
@@ -42,6 +47,10 @@ FOREIGN KEY (id_message) REFERENCES filrouge.messages(id_message);
 ALTER TABLE filrouge.messages
 ADD CONSTRAINT
 FOREIGN KEY(id_auteur) REFERENCES filrouge.users(id);
+--add forein key on ticket table for id_status reference id of the status table:
+ALTER TABLE filrouge.ticket
+ADD CONSTRAINT
+FOREIGN KEY(id_status) REFERENCES filrouge.status(id);
 
 -- INSERT Jeu d'essai
 INSERT INTO `messages` VALUES (1,'test',1,'2024-06-01 00:00:00'),(2,'test2',1,'2002-03-26 00:00:00'),(3,'test3',1,'2003-02-26 00:00:00'),(4,'test4',1,'2026-03-20 00:00:00');

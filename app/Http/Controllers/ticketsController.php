@@ -56,6 +56,7 @@ class ticketsController extends Controller
     public function detailTicket($n)
     {
         $ticketModel = new ticketModel();
+        $status = $ticketModel->get_ticket_status($n);
         $ticket = $ticketModel->getone_ticket($n);
         $tickets = $ticketModel->getallTickets();
         // récupére tous les messages du ticket et les donner à la vue.
@@ -65,7 +66,7 @@ class ticketsController extends Controller
         $NtiketController = new TicketModel();
         $right = $NtiketController->CurrentUser($user);
 
-        return view('detail', ['ticket' => $ticket, 'tickets' => $tickets,'msg'=>$msg,'user'=>$user]);}
+        return view('detail', ['ticket' => $ticket, 'tickets' => $tickets,'msg'=>$msg,'user'=>$user,'status'=>$status]);}
 
 
     public function store(Request $request)
@@ -73,16 +74,18 @@ class ticketsController extends Controller
         $sujet = $request->input('sujet');
         $id_auteur= auth()->user()->id;
         $cdat = Carbon::now(); // Date actuelle
-
+        $id_status=0;
         //Nouvelle instance de la classe ticketModel*:
         $ticketModel = new TicketModel();
-        $res = $ticketModel->store($sujet,$id_auteur, $cdat);
+        $res = $ticketModel->store($sujet,$id_auteur,$id_status,$cdat);
         $ticketModel = new TicketModel();
+        $id= $request->route("idTicket");
+        $status=$ticketModel->get_ticket_status($id);
         $tickets = $ticketModel->getallTickets();
         //Si la la création est retournée false on renvoie ver le formulaire de céation avec un message d'erreur
         if (!$res) {
 
-            return view('new_ticket', ['message' => 'Ticket non créé !', 'tickets' => $tickets]);
+            return view('new_ticket', ['message' => 'Ticket non créé !', 'tickets' => $tickets, 'status'=>$status]);
             //Sinon on renvoi vers le détail du ticket créé avec un message:
         } else {
             return redirect()->route('ticket_detail', ['n' => $res])->withMessage('Ticket créé');
@@ -103,7 +106,7 @@ class ticketsController extends Controller
     public function one_ticket($n)
     {
         $one_ticket_model = new TicketModel();
-        $ticket = $one_ticket_model->getone_ticket;
+        $ticket = $one_ticket_model->getone_ticket();
 
         return view('detail', ['ticket' => $ticket]);
     }
@@ -168,7 +171,6 @@ class ticketsController extends Controller
         $user = auth()->user(); // Récupère l'utilisateur connecté
         $ticketModel = new TicketModel();
         $tickets = $ticketModel->getUserTickets($user->id);
-
         return view('all', ['tickets' => $tickets]);
     }
     public function closedTickets() {
@@ -182,5 +184,18 @@ class ticketsController extends Controller
     $newticketModel= new TicketModel();
     $tickets=$newticketModel->open($user->id);
     return view('open',['tickets'=>$tickets]);
+    }
+    //Fonction maj_status pour la mise à jour du status du ticket par un admin:
+    public function maj_status(Request $request) {
+        //
+        $idTicket = $request->route("idTicket");
+    //1.Récupère la valeur de l'input radio validé dans le formulaire de mise à jour:
+        $new_status=$request->input('status');
+    //2.initialise une nouvelle instance de la classe TicketModel:
+    $new_icketModel= new TicketModel();
+    //3.Fait apel de la fonction de cette instance qui sert à la mise à jour du ticket:
+    $new_update=$new_icketModel->ticket_update($idTicket, $new_status);
+    //4. Redirige vers la page de détiai du ticket:
+    return redirect()->route('ticket_detail',['n'=>$idTicket]);
     }
 }

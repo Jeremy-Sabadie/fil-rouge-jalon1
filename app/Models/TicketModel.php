@@ -12,17 +12,20 @@ class TicketModel extends Model
     use HasFactory;
     public function getallTickets()
     {
-        return DB::select('select * from ticket;');
+        return DB::select('select t.*,s.label
+        from ticket as t
+        inner join status as s on t.id_status=s.id;');
     }
     function getone($n)
     {
-        return DB::selectOne('select * from ticket where id =?;', [$n]);
+        return DB::selectOne('select * from ticket join status on ticket.id_status=status.id
+        where ticket.id =?;', [$n]);
     }
     function getone_ticket($n)
     {
-        return DB::selectOne('select * from ticket where ID =?;', [$n]);
+        return DB::selectOne('select * from ticket where ticket.id =?;', [$n]);
     }
-    function store($sujet, $id_auteur, $cdat)
+    function store($sujet, $id_auteur,$id_status, $cdat)
     {
         //to do gestion des exeptions:
 
@@ -30,7 +33,7 @@ class TicketModel extends Model
             $id = DB::table('ticket')->insertGetId([
                 'sujet' => $sujet,
                 'id_auteur'=>$id_auteur,
-
+                'id_status'=>$id_status,
                 'created_dat' => $cdat,
             ]);
             return $id;
@@ -80,7 +83,7 @@ return DB::select('select * from messages join ticket_message on messages.id_mes
         return -1;
     }
  }
- //Cette fonction devra ^^etre déplacé dans le modèle de users quand il sera fait.
+
     function CurrentUser($n)
     {
         return DB::selectOne('select  role
@@ -88,7 +91,11 @@ from users   where  id=?;', [$n]);
     }
     public function getUserTickets($userId)
 {
-    return DB::select('SELECT * FROM ticket join users on id_auteur=users.id WHERE id_auteur = ?;', [$userId]);
+    return DB::select('
+    SELECT t.*, s.label FROM ticket as t
+    inner join status as s on t.id_status=s.id
+    join users on t.id_auteur=users.id WHERE t.id_auteur = ?;
+     ', [$userId]);
 }
 public function closed($userId) {
         return DB::select("SELECT * FROM ticket JOIN users  ON ticket.id_auteur =users.id
@@ -98,6 +105,18 @@ public function open($userId) {
         return DB::select("SELECT * FROM ticket JOIN users  ON ticket.id_auteur =users.id
 WHERE id_status= ?;",[0]);
 }
+//Fonction qui met à jour le status du ticket en base de données:
+public function ticket_update($idTicket, $nstatus)
+{
+   return DB::update("update ticket set id_status = ? where id = ?", [$nstatus, $idTicket]);
+}
+    function get_ticket_status($n)
+    {
+        return DB::selectOne('select  label
+        from status join ticket on ticket.id_status=status.id
+   where  ticket.id=?;', [$n]);
+    }
+
 }
 
 
