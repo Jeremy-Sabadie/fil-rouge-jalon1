@@ -4,10 +4,10 @@
            @forelse ($tickets as $ticket)
 
                 <li style="display: block;">
-                    <p>numéro: {{ $ticket->id }}</p>
-                    <p>sujet: {{ $ticket->sujet }}</p>
-                    <p>créé le: {{ $ticket->created_dat }}</p>
-                    <p>status: <img src="/images/alerte.png" alt=""></p>
+                    <p><u>numéro:</u> {{ $ticket->id }}</p>
+                    <p><u>sujet:</u> {{ $ticket->sujet }}</p>
+                    <p><u>créé le:</u> {{ $ticket->created_dat }}</p>
+                    <p><u>status:</u> {{$ticket->label}}</p>
                     <button type="button"><a href="{{ route('ticket_detail', ['n' => $ticket->id]) }}">Detail</a></button>
                 </li>
                     @empty

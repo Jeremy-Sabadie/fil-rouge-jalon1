@@ -22,7 +22,7 @@
         </tbody>
     </table>
 <span style="width:100%; margin-top:10px;display:flex;justify-content:space-evenly;">
-    <button><a href="">mettre à jour le status</a></button>
+
     <button id="msgon">voir la conversation</button>
     <button><a href="{{route('all_tickets')}}">tous les tickets</a></button>
 </span>
