@@ -179,12 +179,29 @@ class ticketsController extends Controller
     $tickets=$newticketModel->closed($user->id);
     return view('closed',['tickets'=>$tickets]);
     }
-    public function openTickets() {
+    public function open_tickets() {
         $user = auth()->user();
     $newticketModel= new TicketModel();
-    $tickets=$newticketModel->open($user->id);
+    $tickets=$newticketModel->open_tickets($user->id);
     return view('open',['tickets'=>$tickets]);
     }
+    public function pending_tickets()
+    {
+        $iduser = auth()->user()->id;
+        $newticketModel = new TicketModel();
+        $tickets = $newticketModel->pending_tickets($iduser);
+        return view('pending', ['tickets' => $tickets]);
+    }
+    //Affichage de tickets terminés:
+    public function closed_tickets() {
+        $iduser = auth()->user()->id;
+    $newticketModel= new TicketModel();
+
+    $tickets=$newticketModel->close_tickets($iduser);
+    return view('close',['tickets'=>$tickets]);
+    }
+    //Fonction servant à afficher les tickets en cours:
+
     //Fonction maj_status pour la mise à jour du status du ticket par un admin:
     public function maj_status(Request $request) {
         //

@@ -1,8 +1,4 @@
-@extends('templates.home')
-
-@section('content')
-
-    <h3>Tous vos tickets terminés</h3>
+   <h3>Tous vos tickets en cours de traitement</h3>
     <table>
         <thead>
             <tr>
@@ -28,4 +24,4 @@
             @endforelse
         </tbody>
     </table>
-    @endsection
+

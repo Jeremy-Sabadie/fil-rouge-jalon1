@@ -50,9 +50,13 @@ Route::post('ticket/{id}',[ticketsController::class, 'storemsg'])->name('sumitio
 
 //Route pour aller sur la page admin:
 Route::get('/admin', [ticketsController::class, 'userRight'])->name('admin')->middleware('auth');
-//Routes pour voir les tickets fermés:
-Route::get('closed', [ticketsController::class, 'closedTickets'])->name('close')->middleware('auth');
+
+
+//Routes pour voir les tickets ouvert:
+Route::get('/open', [ticketsController::class, 'open_tickets'])->name('open')->middleware('auth');
 //Routes pour voir les tickets encours:
-Route::get('open', [ticketsController::class, 'openTickets'])->name('open')->middleware('auth');
+Route::get('/pending', [ticketsController::class, 'pending_tickets'])->name('pending')->middleware('auth');
+//Routes pour voir les tickets fermés:
+Route::get('closed', [ticketsController::class, 'closed_tickets'])->name('close')->middleware('auth');
 //Route pour la soummission du formulaire de mise à jour du status du ticket:
 Route::post('/ticket/{idTicket}/status', [ticketsController::class, 'maj_status'])->name('maj_status');

@@ -100,16 +100,14 @@ from users   where  id=?;', [$n]);
     join users on t.id_auteur=users.id WHERE t.id_auteur = ?;
      ', [$userId]);
 }
-public function closed($userId) {
+ public function closed($userId) {
         return DB::select("SELECT * FROM ticket JOIN users  ON ticket.id_auteur =users.id
 WHERE id_status= ?;",[1]);
 }
-public function open($userId) {
-        return DB::select("SELECT * FROM ticket JOIN users  ON ticket.id_auteur =users.id
-WHERE id_status= ?;",[0]);
-}
+
+
 //Fonction qui met à jour le status du ticket en base de données:
-public function ticket_update($idTicket, $nstatus)
+ public function ticket_update($idTicket, $nstatus)
 {
    return DB::update("update ticket set id_status = ? where id = ?", [$nstatus, $idTicket]);
 }
@@ -118,6 +116,22 @@ public function ticket_update($idTicket, $nstatus)
         return DB::selectOne('select  label
         from status join ticket on ticket.id_status=status.id
    where  ticket.id=?;', [$n]);
+    }
+
+     public function open_tickets($id)
+    {
+        return DB::select('select *
+        from ticket join status on ticket.id_status=status.id where status.id=?;',[1]);
+    }
+     public function pending_tickets($id)
+    {
+        return DB::select('select *
+        from ticket join status on ticket.id_status=status.id where status.id=?;',[2]);
+    }
+ public function close_tickets($id)
+    {
+        return DB::select('select *
+        from ticket join status on ticket.id_status=status.id where status.id=?;',[3]);
     }
 
 }

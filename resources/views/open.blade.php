@@ -1,6 +1,6 @@
 @extends('templates.home')
 @section('content')
-<h3>tickets en cours de traitement</h3>
+<h3>tickets en déclarés</h3>
 @if (count($tickets) > 0)
 
 
@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{ $ticket->id }}</td>
                     <td>{{ $ticket->sujet }}</td>
-                    <td><img src="/images/alerte.png" alt=""></td>
+                    <td>{{ $ticket->label }}</td>
                     <td>{{ $ticket->created_dat }}</td>
                     <td><button type="button"><a href="{{ route('ticket_detail', ['n' => $ticket->id]) }}">Detail</a></button></td>
                 </tr>
