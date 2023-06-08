@@ -1,5 +1,6 @@
 @include('components.head')
 <h3><u>détail de la conversation</u></h3>
+<button id="msgon" style="margin-bottom: 10px;">voir la conversation</button>
 <div id="conversation">
     <ul>
 

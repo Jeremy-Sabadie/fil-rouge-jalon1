@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             @forelse ($tickets as $ticket)
-            
+
                 <tr>
                     <td>{{ $ticket->id }}</td>
                     <td>{{ $ticket->sujet }}</td>

@@ -27,7 +27,7 @@
                     <ul class="dropdown-menu">
                         <!-- dropdown list-items  -->
                         <li><a href="{{ route('all_tickets') }}">Tous les tickets</a></li>
-                        <li><a href="{{ route('open') }}">Tous les tickets déclaré</a></li>
+                        <li><a href="{{ route('all_tickets') }}">Tous les tickets déclarés</a></li>
                         <li><a href="{{ route('pending') }}">tickets en cours</a></li>
                         <li><a href="{{ route('close') }}">tickets terminés</a></li>
                         <li><a href="{{ route('new_ticket') }}">nouveau ticket</a></li>

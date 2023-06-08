@@ -46,7 +46,9 @@ class TicketModel extends Model
     {
 
         try {
-            return DB::select('select * from ticket where id = :search or sujet like UPPER(:searchLike) or sujet like :searchLike2;',['search'=>$search, 'searchLike'=>'%'.$search.'%', 'searchLike2' => '%' . $search . '%']);
+            return DB::select('select ticket.id,ticket.sujet,ticket.created_dat, status.label from ticket
+            join status on ticket.id_status= status.id
+            where ticket.id = :search or sujet like UPPER(:searchLike) or sujet like :searchLike2 order by ticket.id;',['search'=>$search, 'searchLike'=>'%'.$search.'%', 'searchLike2' => '%' . $search . '%']);
 
         } catch (Exception $e) {
             return false;
@@ -118,20 +120,26 @@ WHERE id_status= ?;",[1]);
    where  ticket.id=?;', [$n]);
     }
 
-     public function open_tickets($id)
+     public function open_tickets($userid)
     {
-        return DB::select('select *
-        from ticket join status on ticket.id_status=status.id where status.id=?;',[1]);
+        return DB::select('select *from ticket
+        join status on ticket.id_status=status.id
+        join users on ticket.id_auteur= users.id
+        WHERE status.id = ? AND users.id = ?', [1, $userid]);
     }
-     public function pending_tickets($id)
+     public function pending_tickets($userid)
     {
-        return DB::select('select *
-        from ticket join status on ticket.id_status=status.id where status.id=?;',[2]);
+        return DB::select('select *from ticket
+        join status on ticket.id_status=status.id
+        join users on ticket.id_auteur= users.id
+        WHERE status.id = ? AND users.id = ?',[2,$userid]);
     }
- public function close_tickets($id)
+ public function close_tickets($userid)
     {
-        return DB::select('select *
-        from ticket join status on ticket.id_status=status.id where status.id=?;',[3]);
+        return DB::select('select *from ticket
+        join status on ticket.id_status=status.id
+        join users on ticket.id_auteur= users.id
+        WHERE status.id = ? AND users.id = ?',[3,$userid]);
     }
 
 }

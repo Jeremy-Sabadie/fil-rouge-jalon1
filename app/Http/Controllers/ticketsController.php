@@ -62,6 +62,7 @@ class ticketsController extends Controller
         // récupére tous les messages du ticket et les donner à la vue.
         $msg = $ticketModel->searchmsg($n);
         //Récupération des droits de l'utilisateur pour l'affichage de la mise à jour du status du ticket:
+        $user= new User;
         $user = auth()->user();
         $NtiketController = new TicketModel();
         $right = $NtiketController->CurrentUser($user);
@@ -74,7 +75,7 @@ class ticketsController extends Controller
         $sujet = $request->input('sujet');
         $id_auteur= auth()->user()->id;
         $cdat = Carbon::now(); // Date actuelle
-        $id_status=0;
+        $id_status=1;//Par défault le ticket est à 1 =ouvert.
         //Nouvelle instance de la classe ticketModel*:
         $ticketModel = new TicketModel();
         $res = $ticketModel->store($sujet,$id_auteur,$id_status,$cdat);
@@ -126,7 +127,7 @@ class ticketsController extends Controller
         $nbResultSearch = (is_null($tickets)) ? 0 : 1;
         if (count($tickets)) {
             # code...
-
+           
             return view(
                 'result',
                 [

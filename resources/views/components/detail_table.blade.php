@@ -23,6 +23,6 @@
     </table>
 <span style="width:100%; margin-top:10px;display:flex;justify-content:space-evenly;">
 
-    <button id="msgon">voir la conversation</button>
+    
     <button><a href="{{route('all_tickets')}}">tous les tickets</a></button>
 </span>
