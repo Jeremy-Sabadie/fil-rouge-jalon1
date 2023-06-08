@@ -23,10 +23,11 @@ var div = document.getElementById("conversation");
 button.addEventListener("click", function () {
     // Si la div est affichée, on la cache
     if (div.style.display === "block") {
+        button.innerHTML = 'afficher la conversation.';
         div.style.display = "none";
     }
     // Sinon, on l'affiche
-    else {
+    else {button.innerHTML='cacher la conversation.';
         div.style.display = "block";
     }
 });
