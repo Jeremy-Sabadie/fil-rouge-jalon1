@@ -11,19 +11,19 @@
                 {{-- <p>made with <img src="/images/coeur2.png" alt="coeur rouge" style="width: 12px;height:12px;object-fit:contain;margin-top:150px;"></p> --}}
 
         <ul>
-            <h4>titre ul_2</h4>
-            <li><a href="#">Item 1.2</a></li>
-            <li><a href="#">Item 2.2</a></li>
-            <li><a href="#">Item 3.2</a></li>
-            <li><a href="#">Item 4.2</a></li>
-            <li><a href="#">Item 5.2</a></li>
+            <h4>notre entreprise</h4>
+            <li><a href="#">notre histoire</a></li>
+            <li><a href="#">ils nous ont fait confiance</a></li>
+            <li><a href="#">nos projets</a></li>
+            <li><a href="#">collaborateurs</a></li>
+            <li><a href="#">nos services</a></li>
         </ul>
         <ul>
-            <h4>titre ul_3</h4>
-            <li><a href="#">Item 1.3</a></li>
-            <li><a href="#">Item 2.3</a></li>
-            <li><a href="#">Item 3.3</a></li>
-            <li><a href="#">Item 4.3</a></li>
-            <li><a href="#">Item 5.3</a></li>
+            <h4>à propos</h4>
+            <li><a href="#">Installation logiciels</a></li>
+            <li><a href="#">maintenance logiciels</a></li>
+            <li><a href="#">fourniture matériel</a></li>
+            <li><a href="#">installation réseau</a></li>
+            <li><a href="#">sécurité réseau</a></li>
         </ul>
     </footer>
