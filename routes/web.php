@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\AvionController;
 use Illuminate\Support\Facades\Route;
-use Auth;
+use App\Http\Controllers\ticketsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,53 +11,55 @@ use Auth;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web"  group. Make something great!
+| be assigned to the "web" group. Make something great!
 |
 */
-use App\Http\Controllers\ticketsController;
 
-
-//page de connection fournie par fortify:
+// Page de connexion fournie par Fortify
 Route::get('/', function () {
     return view('welcome');
-}); //Fortify: route qui renvoie vers la page acceuil si l'utilisateur seulement si connecté.
+});
+
+// Route qui renvoie vers la page d'accueil si l'utilisateur est connecté
 Route::get('/test', function () {
-    return 'acceuil';
+    return 'accueil';
 })->middleware('auth');
 
-
-
-
-
-//route /new en post qui apelle la fonction create du contrôleur des tickets avec la fonction create qui qui elle apellera la fonction du modèle qui stockera les valeurs des inputs dans la table TICKET:
+// Route pour créer un ticket (POST)
 Route::post('/new', [ticketsController::class, 'store'])->name('avion_create')->middleware('auth');
-//route/new en get pour fournir le fprmulaire de création de ticket:
+
+// Route pour afficher le formulaire de création de ticket (GET)
 Route::get('/new', [ticketsController::class, 'form'])->name('new_ticket')->middleware('auth');
 
+// Route pour la déconnexion
 Route::post('logout', [ticketsController::class, 'logout'])->name('logout')->middleware('auth');
-// route pour afficher le détail d'un ticket:
-Route::get('/ticket/{n}', [ticketsController::class, 'detailTicket'])->name('ticket_detail');
-//route vers la page de conection
 
-//route vers la page d'acceuil utilisateur.
+// Route pour afficher le détail d'un ticket
+Route::get('/ticket/{n}', [ticketsController::class, 'detailTicket'])->name('ticket_detail');
+
+// Route pour la page d'accueil utilisateur
 Route::get('/home', [ticketsController::class, 'home'])->name('home')->middleware('auth');
-//route vers la page de tous les tickets.
+
+// Route pour afficher tous les tickets de l'utilisateur
 Route::get('/tickets', [ticketsController::class, 'allUserTickets'])->name('all_tickets');
 
-//Route home en post pour le traitement de la recherche:
+// Route pour le traitement de la recherche (POST)
 Route::post('/home', [ticketsController::class, 'search'])->name('search');
-//Route pour l'envoie d'un nouveau message:
-Route::post('ticket/{id}',[ticketsController::class, 'storemsg'])->name('sumition_msg');
 
-//Route pour aller sur la page admin:
+// Route pour l'envoi d'un nouveau message
+Route::post('ticket/{id}', [ticketsController::class, 'storemsg'])->name('sumition_msg');
+
+// Route pour accéder à la page admin
 Route::get('/admin', [ticketsController::class, 'userRight'])->name('admin')->middleware('auth');
 
-
-//Routes pour voir les tickets ouvert:
+// Route pour voir les tickets ouverts
 Route::get('/open', [ticketsController::class, 'open_tickets'])->name('open')->middleware('auth');
-//Routes pour voir les tickets encours:
+
+// Route pour voir les tickets en cours
 Route::get('/pending', [ticketsController::class, 'pending_tickets'])->name('pending')->middleware('auth');
-//Routes pour voir les tickets fermés:
+
+// Route pour voir les tickets fermés
 Route::get('closed', [ticketsController::class, 'closed_tickets'])->name('close')->middleware('auth');
-//Route pour la soummission du formulaire de mise à jour du status du ticket:
+
+// Route pour la soumission du formulaire de mise à jour du statut du ticket
 Route::post('/ticket/{idTicket}/status', [ticketsController::class, 'maj_status'])->name('maj_status');
